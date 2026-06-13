@@ -64,7 +64,7 @@
 
 1. **Clone repository:**
    ```bash
-   git clone https://github.com/DuyPhatpeo/rutgonlink.git
+   git clone https://github.com/DuyPhatpeo/link-snap.git
    cd rutgonlink
    ```
 
