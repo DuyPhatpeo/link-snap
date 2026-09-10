@@ -111,3 +111,14 @@ function initLinkChart(dailyClicks) {
 }
 
 window.initLinkChart = initLinkChart;
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-pct]').forEach(el => {
+        const pct = el.getAttribute('data-pct');
+        if (pct) {
+            requestAnimationFrame(() => {
+                el.style.width = pct + '%';
+            });
+        }
+    });
+});

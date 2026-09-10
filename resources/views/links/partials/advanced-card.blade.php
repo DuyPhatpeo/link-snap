@@ -90,7 +90,7 @@
                 $clickPct = min(100, round(($link->clicks / max(1, $link->click_limit)) * 100));
             @endphp
             <div class="w-full bg-slate-200 h-1.5 rounded-full mt-1.5 overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full" {!! "style=\"width: {$clickPct}%;\"" !!}></div>
+                <div class="bg-emerald-500 h-full rounded-full transition-all duration-700" data-pct="{{ $clickPct }}" style="width: 0%;"></div>
             </div>
         </div>
         @endif
