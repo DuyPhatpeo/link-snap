@@ -47,9 +47,9 @@
                 {{ $link->description ?? 'Vui lòng đợi trong giây lát, hệ thống LinkSnap đang kết nối an toàn.' }}
             </p>
 
-            {{-- Thanh tiến trình Loading bar với Gradient mới --}}
+            {{-- Thanh tiến trình Loading bar --}}
             <div class="w-56 sm:w-64 h-2 bg-slate-100 rounded-full mx-auto overflow-hidden relative mb-4">
-                <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 w-1/3 rounded-full animate-[loading_1.4s_infinite_ease-in-out]"></div>
+                <div class="absolute inset-y-0 left-0 bg-indigo-600 w-1/3 rounded-full animate-[loading_1.4s_infinite_ease-in-out]"></div>
             </div>
             
             <p class="text-xs font-semibold text-slate-400">

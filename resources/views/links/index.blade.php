@@ -3,8 +3,8 @@
 @section('title', 'Danh sách liên kết - LinkSnap')
 
 @section('content')
-<main class="min-h-screen pt-4 pb-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="min-h-screen pt-6 sm:pt-8 pb-20">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6">
         
         {{-- Header Section --}}
         <div class="glass-card rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-sm mb-6 flex flex-col md:flex-row md:items-end justify-between gap-5 animate-in fade-in duration-500">
@@ -75,5 +75,5 @@
             </div>
         </div>
     </div>
-</main>
+</div>
 @endsection

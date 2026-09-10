@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="overflow-y-auto max-h-[580px] divide-y divide-slate-100/80 scrollbar-hide">
+        <div class="overflow-y-auto max-h-[460px] divide-y divide-slate-100/80 scrollbar-hide">
             @forelse($logs as $log)
             @php
                 $osIcons = ['Windows'=>'🪟','MacOS'=>'🍎','Linux'=>'🐧','Android'=>'🤖','iOS'=>'📱'];
