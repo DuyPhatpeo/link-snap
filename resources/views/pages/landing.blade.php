@@ -23,8 +23,8 @@
             <div class="relative group">
                 <div class="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full"></div>
                 <div class="relative w-[260px] sm:w-[300px] bg-slate-950 rounded-[44px] p-2.5 shadow-2xl border-4 border-slate-800 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <div class="bg-gradient-to-b from-slate-900 to-indigo-950 h-[480px] rounded-[34px] p-5 flex flex-col items-center text-center overflow-hidden border border-white/10">
-                        <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-indigo-500 to-cyan-400 p-0.5 mb-2.5 shadow-lg">
+                    <div class="bg-slate-900 h-[480px] rounded-[34px] p-5 flex flex-col items-center text-center overflow-hidden border border-white/10">
+                        <div class="w-14 h-14 rounded-full bg-indigo-600 p-0.5 mb-2.5 shadow-md">
                             <img src="{{ asset('logo.png') }}" class="w-full h-full object-cover rounded-full bg-white p-1">
                         </div>
                         <h4 class="text-white font-black font-outfit text-sm">@creator_pro</h4>
@@ -75,12 +75,11 @@
 
 {{-- Bottom Call to Action --}}
 <section class="py-8 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="rounded-3xl bg-gradient-to-tr from-indigo-600 via-indigo-700 to-violet-600 p-7 sm:p-10 text-center text-white shadow-xl relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent)] pointer-events-none"></div>
+    <div class="rounded-3xl bg-indigo-600 p-7 sm:p-10 text-center text-white shadow-lg relative overflow-hidden">
         <h2 class="text-2xl sm:text-4xl font-black font-outfit mb-3 tracking-tight">Bắt đầu trải nghiệm ngay hôm nay</h2>
         <p class="text-indigo-100 text-xs sm:text-sm max-w-lg mx-auto mb-6 font-medium">Hoàn toàn miễn phí, không giới hạn lượt click và tích hợp đầy đủ công cụ theo dõi số liệu.</p>
         <div class="flex flex-wrap justify-center gap-3">
-            <button onclick="Modal.open('registerModal')" class="px-8 py-3.5 bg-white text-indigo-700 font-black font-outfit text-xs uppercase tracking-widest rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all">
+            <button onclick="Modal.open('registerModal')" class="px-8 py-3.5 bg-white text-indigo-600 hover:bg-slate-50 font-black font-outfit text-xs uppercase tracking-widest rounded-full shadow-md active:scale-95 transition-all">
                 Tạo tài khoản miễn phí
             </button>
         </div>

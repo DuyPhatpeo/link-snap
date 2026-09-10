@@ -55,7 +55,7 @@
         <div class="relative mb-6">
             <h1 class="text-8xl sm:text-9xl font-black text-slate-100 select-none tracking-tighter opacity-70 absolute left-1/2 -translate-x-1/2 -top-8 font-heading">500</h1>
             <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight relative z-10 pt-4 font-heading">
-                Máy chủ <br> <span class="bg-gradient-to-r from-rose-600 to-indigo-600 bg-clip-text text-transparent">đang gặp sự cố.</span>
+                Máy chủ <br> <span class="text-rose-600">đang gặp sự cố.</span>
             </h2>
         </div>
 
@@ -65,7 +65,7 @@
 
         {{-- Action Buttons --}}
         <div class="flex flex-col gap-3">
-            <button onclick="window.location.reload()" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-indigo-600 via-indigo-600 to-violet-600 hover:from-indigo-500 hover:via-indigo-500 hover:to-violet-500 shadow-md shadow-indigo-500/25 active:scale-[0.99] transition-all">
+            <button onclick="window.location.reload()" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm active:scale-[0.99] transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>

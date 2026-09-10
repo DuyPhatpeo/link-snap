@@ -3,7 +3,7 @@
     <div class="bg-white/95 backdrop-blur-2xl rounded-[36px] p-7 sm:p-10 w-full max-w-md shadow-2xl border border-white/90 relative">
         <div class="flex flex-col items-center mb-7">
             {{-- Logo Mark --}}
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-cyan-400 p-[1.5px] shadow-lg shadow-indigo-500/25 mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-600 p-[2px] shadow-sm mb-4">
                 <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center p-2">
                     <img src="{{ asset('logo.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit py-3.5 rounded-2xl transition-all shadow-lg shadow-indigo-500/25 uppercase tracking-wider text-xs active:scale-95 mt-2">
+            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit py-3.5 rounded-2xl transition-all shadow-sm uppercase tracking-wider text-xs active:scale-95 mt-2">
                 Đăng nhập
             </button>
             

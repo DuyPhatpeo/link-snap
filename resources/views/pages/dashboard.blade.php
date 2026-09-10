@@ -1,5 +1,5 @@
 {{-- === BẢNG ĐIỀU KHIỂN DÀNH CHO USER ĐÃ ĐĂNG NHẬP === --}}
-<div class="flex flex-col px-3 sm:px-6 max-w-6xl mx-auto pt-2 pb-10">
+<div class="flex flex-col px-3 sm:px-6 max-w-7xl mx-auto pt-4 sm:pt-6 pb-10">
     
     {{-- Section: Welcome & Status Chip --}}
     <section class="mt-1 mb-4">
@@ -66,7 +66,7 @@
 
                 {{-- Nút Submit --}}
                 <button type="submit" id="btnSubmit"
-                    class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit px-6 sm:px-7 py-3 rounded-xl sm:rounded-full transition-all shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-6 sm:px-7 py-3 rounded-xl sm:rounded-full transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
                     Rút gọn link ✨
                 </button>
             </form>
@@ -172,13 +172,12 @@
     </section>
 
     {{-- Section: Spotlight Banner Bio --}}
-    <section class="mb-6 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 sm:p-7 text-white shadow-xl border border-white/10">
-        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-violet-600/30 rounded-full blur-3xl pointer-events-none"></div>
+    <section class="mb-6 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-slate-900 p-6 sm:p-7 text-white shadow-lg border border-slate-800">
         <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="max-w-xl space-y-2 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span class="text-[9px] font-black uppercase tracking-widest text-cyan-300">Tính năng nổi bật</span>
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-slate-800 rounded-full border border-slate-700">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Tính năng nổi bật</span>
                 </div>
                 <h2 class="text-xl sm:text-2xl font-black font-outfit leading-snug">
                     Tạo trang cá nhân ấn tượng chỉ trong 60 giây
@@ -187,7 +186,7 @@
                     Tùy biến avatar, màu nền, các nút liên kết động và xem trước thời gian thực trên khung điện thoại di động.
                 </p>
             </div>
-            <a href="{{ route('bio.index') }}" class="px-6 py-3 bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black font-outfit rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-wider shrink-0">
+            <a href="{{ route('bio.index') }}" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-black font-outfit rounded-xl shadow-sm transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-wider shrink-0">
                 Bắt đầu tạo Bio &rarr;
             </a>
         </div>

@@ -6,7 +6,7 @@
         
         {{-- Brand Chip --}}
         <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full mb-3 border border-slate-200/80 shadow-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
             <span class="text-[10px] font-black font-outfit text-slate-700 tracking-wider uppercase">LinkSnap 2.0 &bull; Nền Tảng Thế Hệ Mới</span>
         </div>
 
@@ -52,7 +52,7 @@
                 </div>
 
                 <button type="submit" id="btnSubmit"
-                    class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit px-7 sm:px-8 py-3 rounded-xl sm:rounded-full transition-all shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-7 sm:px-8 py-3 rounded-xl sm:rounded-full transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
                     Rút gọn ngay ✨
                 </button>
             </form>

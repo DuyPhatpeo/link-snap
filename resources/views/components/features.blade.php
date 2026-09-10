@@ -41,7 +41,7 @@
                     </div>
                     <div class="h-14 flex items-end gap-2">
                         @foreach([35, 55, 40, 70, 60, 90, 100] as $h)
-                        <div class="flex-1 bg-gradient-to-t from-indigo-500 to-cyan-400 rounded-lg transition-all hover:opacity-80" style="height: {{ $h }}%;"></div>
+                        <div class="flex-1 bg-indigo-500 rounded-lg transition-all hover:bg-indigo-600" style="height: {{ $h }}%;"></div>
                         @endforeach
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="w-full sm:w-56 bg-white p-2.5 rounded-xl border border-slate-200/80 shadow-md">
-                        <div class="w-full h-20 bg-gradient-to-tr from-indigo-500 to-cyan-400 rounded-lg mb-2 flex items-center justify-center text-white text-[11px] font-bold font-outfit">
+                        <div class="w-full h-20 bg-indigo-600 rounded-lg mb-2 flex items-center justify-center text-white text-[11px] font-bold font-outfit">
                             Thẻ xem trước
                         </div>
                         <div class="h-2.5 w-3/4 bg-slate-200 rounded-full mb-1"></div>

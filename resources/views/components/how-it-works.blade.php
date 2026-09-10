@@ -30,7 +30,7 @@
 
             {{-- Step 2 --}}
             <div class="flex flex-col items-center text-center group">
-                <div class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/25 border border-white/20 relative group-hover:-translate-y-1.5 transition-transform duration-300">
+                <div class="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-md border border-indigo-500 relative group-hover:-translate-y-1.5 transition-transform duration-300">
                     <span class="font-heading text-3xl font-black text-white">2</span>
                     <div class="absolute -right-2 -top-2 w-7 h-7 bg-white text-indigo-600 rounded-full flex items-center justify-center text-xs font-black shadow-md">✨</div>
                 </div>
