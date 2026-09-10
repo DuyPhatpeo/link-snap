@@ -9,7 +9,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Auth Routes (API)
+// Auth Routes
+Route::get('/login', function () {
+    return redirect('/?login=1');
+})->name('login');
+Route::get('/register', function () {
+    return redirect('/?register=1');
+})->name('register');
 Route::post('/api/login', [AuthController::class, 'login']);
 Route::post('/api/register', [AuthController::class, 'register']);
 Route::post('/api/logout', [AuthController::class, 'logout'])->name('logout');
