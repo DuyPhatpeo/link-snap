@@ -62,10 +62,12 @@
         </div>
     </div>
 </div>
+@endsection
 
+@push('modals')
 {{-- Modal Thêm/Sửa Link --}}
 @include('bio.partials.link-modal')
-@endsection
+@endpush
 
 @push('styles')
 <style>

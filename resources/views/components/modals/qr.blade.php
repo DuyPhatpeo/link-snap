@@ -1,5 +1,5 @@
 <!-- Modal Hiển thị Mã QR Code -->
-<div id="qrModal" onclick="if(event.target===this) Modal.close('qrModal')" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden animate-in zoom-in duration-300">
+<div id="qrModal" onclick="if(event.target===this) Modal.close('qrModal')" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-[100] flex items-center justify-center p-4 hidden animate-in zoom-in duration-300">
     <div class="bg-white/95 backdrop-blur-2xl rounded-2xl p-7 sm:p-9 w-full max-w-sm shadow-2xl border border-white/90 relative flex flex-col items-center text-center gap-5">
         <div class="space-y-1">
             <h3 class="text-xl font-black font-outfit text-slate-900 tracking-tight">Mã QR Code</h3>

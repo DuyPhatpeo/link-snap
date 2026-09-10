@@ -76,8 +76,8 @@
 
     {{-- Interactive SaaS Dashboard App Showcase Mockup --}}
     <div class="w-full max-w-5xl mx-auto mt-8 sm:mt-12 px-4 sm:px-6 relative">
-        {{-- Floating Badges around the app --}}
-        <div class="hidden lg:flex items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 absolute -top-5 -left-2 z-20 animate-bounce [animation-duration:4s]">
+        {{-- Floating Stat Pill Badges --}}
+        <div class="hidden lg:flex items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 absolute -top-5 -left-2 z-20 hover:-translate-y-1 transition-transform duration-300 cursor-default">
             <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs">⚡</div>
             <div>
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Tốc độ chuyển hướng</p>
@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 absolute -top-4 -right-2 z-20 animate-bounce [animation-duration:5s]">
+        <div class="hidden lg:flex items-center gap-2 px-3.5 py-2 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 absolute -top-4 -right-2 z-20 hover:-translate-y-1 transition-transform duration-300 cursor-default">
             <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs">📈</div>
             <div>
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Lượt click tháng này</p>
@@ -155,9 +155,10 @@
                                 </defs>
                                 <path d="M0,80 Q50,65 100,70 T200,45 T300,50 T400,20 T500,10 L500,100 L0,100 Z" fill="url(#heroGradient)"/>
                                 <path d="M0,80 Q50,65 100,70 T200,45 T300,50 T400,20 T500,10" fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round"/>
-                                <circle cx="400" cy="20" r="4" fill="#6366f1" class="animate-ping" />
-                                <circle cx="400" cy="20" r="4" fill="#6366f1" />
-                                <circle cx="500" cy="10" r="4" fill="#4f46e5" />
+                                <circle cx="400" cy="20" r="7" fill="#6366f1" fill-opacity="0.2"/>
+                                <circle cx="400" cy="20" r="3.5" fill="#6366f1" />
+                                <circle cx="500" cy="10" r="6" fill="#4f46e5" fill-opacity="0.2"/>
+                                <circle cx="500" cy="10" r="3.5" fill="#4f46e5" />
                             </svg>
                         </div>
                     </div>

@@ -24,7 +24,7 @@
                 <div class="absolute inset-0 bg-indigo-500/20 blur-3xl rounded-full"></div>
 
                 {{-- Floating Stat Chips --}}
-                <div class="absolute -top-3 -right-6 z-20 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-slate-200/80 shadow-xl flex items-center gap-2 animate-bounce" style="animation-duration: 4s;">
+                <div class="absolute -top-3 -right-6 z-20 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-slate-200/80 shadow-xl flex items-center gap-2 hover:-translate-y-1 transition-transform duration-300 cursor-default">
                     <span class="text-sm">❤️</span>
                     <div>
                         <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Tương tác</p>

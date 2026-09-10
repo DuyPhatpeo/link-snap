@@ -1,5 +1,5 @@
 <!-- Modal Đăng nhập -->
-<div id="loginModal" onclick="if(event.target===this) Modal.close('loginModal')" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden animate-in fade-in duration-300">
+<div id="loginModal" onclick="if(event.target===this) Modal.close('loginModal')" class="fixed inset-0 bg-slate-950/60 backdrop-blur-md z-[100] flex items-center justify-center p-4 hidden animate-in fade-in duration-300">
     <div class="bg-white/95 backdrop-blur-2xl rounded-2xl p-7 sm:p-9 w-full max-w-md shadow-2xl border border-white/90 relative">
         <div class="flex flex-col items-center mb-6">
             {{-- Logo Mark --}}

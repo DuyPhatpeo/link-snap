@@ -48,19 +48,19 @@
                     <div class="h-16 flex items-end gap-2 sm:gap-3 pt-1">
                         @php
                             $statsData = [
-                                ['day' => 'T2', 'h' => 38],
-                                ['day' => 'T3', 'h' => 58],
-                                ['day' => 'T4', 'h' => 45],
-                                ['day' => 'T5', 'h' => 75],
-                                ['day' => 'T6', 'h' => 65],
-                                ['day' => 'T7', 'h' => 92],
-                                ['day' => 'CN', 'h' => 100],
+                                ['day' => 'T2', 'cls' => 'h-[38%]'],
+                                ['day' => 'T3', 'cls' => 'h-[58%]'],
+                                ['day' => 'T4', 'cls' => 'h-[45%]'],
+                                ['day' => 'T5', 'cls' => 'h-[75%]'],
+                                ['day' => 'T6', 'cls' => 'h-[65%]'],
+                                ['day' => 'T7', 'cls' => 'h-[92%]'],
+                                ['day' => 'CN', 'cls' => 'h-full'],
                             ];
                         @endphp
                         @foreach($statsData as $item)
                         <div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group/bar">
-                            <div class="w-full bg-indigo-100/60 group-hover/bar:bg-indigo-200 rounded-md relative flex items-end overflow-hidden" style="height: 100%;">
-                                <div class="w-full bg-gradient-to-t from-indigo-600 to-indigo-400 rounded-md transition-all group-hover/bar:from-indigo-700 group-hover/bar:to-indigo-500 shadow-sm" style="height: {{ $item['h'] }}%;"></div>
+                            <div class="w-full h-full bg-indigo-100/60 group-hover/bar:bg-indigo-200 rounded-md relative flex items-end overflow-hidden">
+                                <div class="w-full bg-gradient-to-t from-indigo-600 to-indigo-400 rounded-md transition-all group-hover/bar:from-indigo-700 group-hover/bar:to-indigo-500 shadow-sm {{ $item['cls'] }}"></div>
                             </div>
                             <span class="text-[9px] font-mono text-slate-400 group-hover/bar:text-indigo-600 font-semibold">{{ $item['day'] }}</span>
                         </div>

@@ -159,7 +159,7 @@
     </header>
 
     <!-- Main Content Canvas -->
-    <main class="relative z-10 transition-all duration-300">
+    <main class="transition-all duration-300">
         @yield('content')
     </main>
 
@@ -272,6 +272,7 @@
 
     <!-- Modals -->
     @include('partials.modals')
+    @stack('modals')
 
     <!-- Core Application JavaScript -->
     <script src="{{ asset('js/app.js') }}" defer></script>

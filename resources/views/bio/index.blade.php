@@ -47,10 +47,12 @@
 
     </div>
 </div>
+@endsection
 
+@push('modals')
 {{-- Modal tạo Bio Page --}}
 @include('bio.partials.create-modal')
-@endsection
+@endpush
 
 @push('scripts')
 <script src="{{ asset('js/bio-manager.js') }}" defer></script>
