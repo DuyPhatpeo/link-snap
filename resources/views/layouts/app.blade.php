@@ -70,26 +70,24 @@
 </head>
 <body class="font-sans min-h-screen text-slate-800 bg-[#fbfbfe] selection:bg-indigo-100 selection:text-indigo-600 antialiased relative overflow-x-hidden" data-auth="{{ Auth::check() ? '1' : '0' }}">
 
-    {{-- Ambient Aurora Canvas Blobs (Mượt mà, sống động) --}}
+    {{-- Subtle Ambient Background --}}
     <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10 select-none">
-        <div class="absolute -top-[15%] -left-[10%] w-[55vw] h-[55vw] max-w-[700px] max-h-[700px] bg-gradient-to-br from-indigo-200/40 via-purple-200/30 to-cyan-100/40 rounded-full blur-[130px] animate-pulse" style="animation-duration: 9s;"></div>
-        <div class="absolute top-[25%] -right-[15%] w-[50vw] h-[50vw] max-w-[650px] max-h-[650px] bg-gradient-to-bl from-cyan-200/35 via-blue-100/30 to-rose-100/25 rounded-full blur-[140px] animate-pulse" style="animation-duration: 12s; animation-delay: 2s;"></div>
-        <div class="absolute bottom-[-10%] left-[20%] w-[60vw] h-[40vw] max-w-[800px] bg-gradient-to-tr from-violet-100/40 to-sky-100/40 rounded-full blur-[150px]"></div>
+        <div class="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[80vw] max-w-[900px] h-[350px] bg-indigo-50/70 rounded-full blur-[120px]"></div>
     </div>
 
     <!-- Floating Pill Navigation (Thanh điều hướng nổi) -->
-    <header class="sticky top-2.5 z-50 max-w-6xl mx-auto px-3 sm:px-6 transition-all duration-300">
+    <header class="sticky top-2.5 z-50 max-w-7xl mx-auto px-3 sm:px-6 transition-all duration-300">
         <nav class="glass-pill rounded-full px-4 sm:px-5 py-2 flex items-center justify-between transition-all duration-300">
             
             {{-- Brand Logo --}}
             <div class="flex items-center gap-3 select-none cursor-pointer group active:scale-95 transition-all" onclick="window.location.assign('/')">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-violet-600 to-cyan-400 p-[2px] shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/35 transition-all duration-300">
+                <div class="w-10 h-10 rounded-2xl bg-indigo-600 p-[2px] shadow-sm group-hover:bg-indigo-700 transition-all duration-300">
                     <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center p-1.5">
                         <img src="{{ asset('logo.png') }}" alt="LinkSnap" class="w-full h-full object-contain rounded-lg">
                     </div>
                 </div>
                 <span class="text-xl sm:text-2xl font-black font-outfit tracking-tight text-slate-900 group-hover:opacity-95">
-                    Link<span class="text-gradient-aurora">Snap</span>
+                    Link<span class="text-indigo-600">Snap</span>
                 </span>
             </div>
 
@@ -124,7 +122,7 @@
                     {{-- User Profile Pill --}}
                     <div class="hidden md:flex items-center gap-3 pl-2 border-l border-slate-200">
                         <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/80 pl-2.5 pr-3 py-1.5 rounded-full">
-                            <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 text-white font-black text-[10px] flex items-center justify-center">
+                            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white font-black text-[10px] flex items-center justify-center">
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                             </div>
                             <span class="text-xs font-bold text-slate-700 max-w-[120px] truncate">{{ Auth::user()->name }}</span>
@@ -151,7 +149,7 @@
                         <button onclick="Modal.open('loginModal')" class="text-xs font-bold text-slate-600 hover:text-slate-900 px-3 sm:px-4 py-2 rounded-full hover:bg-slate-100 transition-all">
                             Đăng nhập
                         </button>
-                        <button onclick="Modal.open('registerModal')" class="text-xs font-bold bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white px-4 sm:px-5 py-2 rounded-full shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/30 transition-all active:scale-95">
+                        <button onclick="Modal.open('registerModal')" class="text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-5 py-2 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
                             Bắt đầu ngay
                         </button>
                     </div>
@@ -167,17 +165,17 @@
 
     <!-- Bespoke Modern Footer -->
     <footer class="mt-10 border-t border-slate-200/60 bg-white/50 backdrop-blur-lg pt-10 pb-8 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 {{-- Col 1: Brand & Tagline --}}
                 <div class="md:col-span-2 space-y-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-[1.5px]">
+                        <div class="w-8 h-8 rounded-xl bg-indigo-600 p-[1.5px]">
                             <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1">
                                 <img src="{{ asset('logo.png') }}" alt="Logo" class="w-full h-full object-contain">
                             </div>
                         </div>
-                        <span class="text-xl font-black font-outfit text-slate-900">Link<span class="text-gradient-aurora">Snap</span></span>
+                        <span class="text-xl font-black font-outfit text-slate-900">Link<span class="text-indigo-600">Snap</span></span>
                     </div>
                     <p class="text-slate-500 text-xs sm:text-sm font-medium leading-relaxed max-w-sm">
                         Nền tảng rút gọn liên kết thông minh, bảo mật mã hóa và xây dựng trang Bio Profile đỉnh cao cho người sáng tạo nội dung hiện đại.
@@ -240,7 +238,7 @@
             </div>
 
             <div class="p-6 bg-slate-50/70 border-b border-slate-100 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white font-black text-sm shadow-md">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-sm">
                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                 </div>
                 <div class="overflow-hidden">

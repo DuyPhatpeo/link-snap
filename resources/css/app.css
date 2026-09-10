@@ -72,17 +72,13 @@
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
-/* Gradient Text */
+/* Brand Text */
 .text-gradient-aurora {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 35%, #06b6d4 70%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #4f46e5;
 }
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #0284c7;
 }
 
 /* Hyper Glass Panels */

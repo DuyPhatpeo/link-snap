@@ -41,15 +41,11 @@ body {
 
 /* Gradient Text Utilities */
 .text-gradient-aurora {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #4f46e5;
 }
 
 .text-gradient-fire {
-  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #f97316 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #e11d48;
 }
 
 /* Aurora Glow Animations */
