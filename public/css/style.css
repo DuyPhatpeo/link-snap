@@ -1,0 +1,101 @@
+/**
+ * LinkSnap - Custom Design Tokens & Utilities
+ * Cyber-Luxe & Aurora Glass Aesthetic
+ */
+
+/* Custom Typography */
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.font-heading {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+.font-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Glassmorphism Surfaces */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.07);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05);
+}
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+}
+
+/* Gradient Text Utilities */
+.text-gradient-aurora {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 40%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-fire {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Aurora Glow Animations */
+@keyframes auroraMove {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(40px, -60px) rotate(120deg) scale(1.15); }
+  66% { transform: translate(-30px, 40px) rotate(240deg) scale(0.9); }
+  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35), 0 0 15px -3px rgba(6, 182, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px 5px rgba(139, 92, 246, 0.45), 0 0 25px 2px rgba(236, 72, 153, 0.25);
+  }
+}
+
+.animate-aurora-1 { animation: auroraMove 18s ease-in-out infinite; }
+.animate-aurora-2 { animation: auroraMove 24s ease-in-out infinite reverse; }
+.animate-aurora-3 { animation: auroraMove 30s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 4s ease-in-out infinite; }
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

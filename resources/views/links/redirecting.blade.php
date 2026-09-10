@@ -3,44 +3,69 @@
 @section('title', $link->title ?? 'Đang chuyển hướng...')
 
 {{-- Set Social Preview Tags --}}
-@section('og_title', $link->title ?? 'LinkSnap - URL Shortener')
-@section('og_description', $link->description ?? 'Đang chuyển hướng đến URL gốc...')
+@section('og_title', $link->title ?? 'LinkSnap - Rút gọn liên kết')
+@section('og_description', $link->description ?? 'Đang chuyển hướng đến URL gốc an toàn qua LinkSnap...')
 @section('og_image', $link->thumbnail ?? asset('logo.png'))
 
 @section('content')
-<div class="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">
-    <div class="animate-in fade-in zoom-in duration-700">
+<div class="min-h-[70vh] flex flex-col items-center justify-center px-4 py-12 text-center">
+    <div class="max-w-lg w-full animate-in fade-in zoom-in-95 duration-500">
         
-        {{-- Thumbnail Display if exists --}}
-        @if($link->thumbnail)
-            <div class="mb-8 relative group">
-                <div class="absolute -inset-4 bg-brand-blue/20 rounded-[40px] blur-2xl group-hover:bg-brand-blue/30 transition-all"></div>
-                <img src="{{ $link->thumbnail }}" alt="Thumbnail" class="relative w-32 h-32 md:w-48 md:h-48 object-cover rounded-[32px] shadow-2xl border-4 border-white">
-            </div>
-        @else
-            <div class="w-24 h-24 bg-blue-50 rounded-[32px] flex items-center justify-center mb-8 mx-auto animate-bounce duration-[2000ms]">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
-                </svg>
-            </div>
-        @endif
+        {{-- Card chính --}}
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200/80 relative overflow-hidden">
+            
+            {{-- Accent Glow --}}
+            <div class="absolute -top-12 -right-12 w-36 h-36 bg-gradient-to-br from-indigo-500/10 to-violet-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        <h1 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight mb-4">
-            {{ $link->title ?? 'Đang chuẩn bị chuyển hướng...' }}
-        </h1>
-        
-        <p class="text-slate-500 font-semibold mb-10 max-w-md mx-auto line-clamp-2">
-            {{ $link->description ?? 'Vui lòng đợi trong giây lát, bạn đang được đưa đến địa chỉ đích.' }}
-        </p>
+            {{-- Thumbnail hoặc Icon chuyển hướng --}}
+            @if($link->thumbnail)
+                <div class="mb-6 relative inline-block group">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-indigo-500/20 to-violet-500/20 rounded-2xl blur-lg group-hover:from-indigo-500/30 group-hover:to-violet-500/30 transition-all"></div>
+                    <img src="{{ $link->thumbnail }}" alt="Thumbnail" class="relative w-28 h-28 sm:w-36 sm:h-36 object-cover rounded-2xl shadow-lg border-2 border-white">
+                </div>
+            @else
+                <div class="w-20 h-20 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-6 mx-auto shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-indigo-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
+                    </svg>
+                </div>
+            @endif
 
-        {{-- Thanh tiến trình (Loading bar) --}}
-        <div class="w-64 h-2 bg-slate-100 rounded-full mx-auto overflow-hidden relative">
-            <div class="absolute inset-y-0 left-0 bg-brand-blue w-1/3 rounded-full animate-[loading_1.5s_infinite_ease-in-out]"></div>
+            {{-- Badge --}}
+            <div class="mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
+                    Đang chuyển hướng an toàn
+                </span>
+            </div>
+
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight font-heading mb-3">
+                {{ $link->title ?? 'Đang chuẩn bị đưa bạn đến trang đích...' }}
+            </h1>
+            
+            <p class="text-slate-500 text-sm font-medium mb-8 max-w-sm mx-auto line-clamp-2">
+                {{ $link->description ?? 'Vui lòng đợi trong giây lát, hệ thống LinkSnap đang kết nối an toàn.' }}
+            </p>
+
+            {{-- Thanh tiến trình Loading bar với Gradient mới --}}
+            <div class="w-56 sm:w-64 h-2 bg-slate-100 rounded-full mx-auto overflow-hidden relative mb-4">
+                <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 w-1/3 rounded-full animate-[loading_1.4s_infinite_ease-in-out]"></div>
+            </div>
+            
+            <p class="text-xs font-semibold text-slate-400">
+                Tự động chuyển tiếp sau 2 giây...
+            </p>
+
+            {{-- Direct link if user is impatient --}}
+            <div class="mt-6 pt-5 border-t border-slate-100">
+                <a href="{{ $link->original_url }}" class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+                    <span>Nhấn vào đây nếu không tự chuyển hướng</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
         </div>
-        
-        <p class="mt-6 text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
-            Redirecting in 2 seconds...
-        </p>
 
     </div>
 </div>
