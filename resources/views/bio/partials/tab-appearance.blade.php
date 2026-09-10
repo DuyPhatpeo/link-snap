@@ -238,7 +238,7 @@
             </div>
 
             <div class="pt-4 border-t border-slate-100 flex justify-end">
-                <button type="submit" class="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit px-7 py-3 rounded-2xl shadow-md shadow-indigo-500/25 transition-all active:scale-95 text-xs uppercase tracking-wider">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-7 py-3 rounded-2xl shadow-sm transition-all active:scale-95 text-xs uppercase tracking-wider">
                     Lưu cài đặt giao diện ✨
                 </button>
             </div>

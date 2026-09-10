@@ -5,7 +5,7 @@
             <h2 class="text-xl sm:text-2xl font-black font-outfit text-slate-800 tracking-tight">Quản lý liên kết</h2>
             <p class="text-slate-400 font-medium text-xs">Dễ dàng thêm, sửa hoặc kéo thả thay đổi vị trí các liên kết của bạn.</p>
         </div>
-        <button onclick="Editor.openLinkModal()" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit px-6 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 transition-all active:scale-95 text-xs uppercase tracking-wider">
+        <button onclick="Editor.openLinkModal()" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-6 py-3 rounded-2xl shadow-sm transition-all active:scale-95 text-xs uppercase tracking-wider">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
             Thêm link mới
         </button>

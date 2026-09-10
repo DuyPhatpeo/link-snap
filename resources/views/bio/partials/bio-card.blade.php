@@ -6,7 +6,7 @@
     <div>
         {{-- Card Header: Avatar + Info --}}
         <div class="flex items-center gap-3.5 mb-4">
-            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-500 to-cyan-400 p-[1.5px] shadow-sm shrink-0">
+            <div class="w-11 h-11 rounded-2xl bg-indigo-600 p-[1.5px] shadow-sm shrink-0">
                 <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden">
                     @if($page->profile_image)
                         <img src="{{ $page->profile_image }}" class="w-full h-full object-cover" alt="{{ $page->title }}">

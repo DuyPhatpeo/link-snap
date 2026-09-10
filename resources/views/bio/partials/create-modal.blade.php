@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="pt-1.5">
-                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit py-3 rounded-xl sm:rounded-2xl shadow-md shadow-indigo-500/25 uppercase tracking-wider text-xs active:scale-95 transition-all">
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit py-3 rounded-xl sm:rounded-2xl shadow-sm uppercase tracking-wider text-xs active:scale-95 transition-all">
                         Tiếp tục thiết lập &rarr;
                     </button>
                 </div>
