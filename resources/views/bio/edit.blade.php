@@ -3,10 +3,10 @@
 @section('title', 'Chỉnh sửa Bio Page - ' . $bioPage->title)
 
 @section('content')
-<div class="bg-[#F8F9FB] min-h-screen pb-16">
-    {{-- Top Navigation Bar --}}
-    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 transition-all">
-        <div class="max-w-6xl mx-auto px-3 sm:px-6 h-16 md:h-18 flex items-center justify-between gap-3">
+<div class="min-h-screen pt-4 sm:pt-6 pb-16">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6">
+        {{-- Top Sub-Navigation Header Card --}}
+        <div class="glass-card rounded-2xl p-3 sm:p-4 border border-slate-200/80 mb-6 flex items-center justify-between gap-3 shadow-sm">
             <div class="flex items-center gap-3 md:gap-4 min-w-0">
                 <a href="{{ route('bio.index') }}" class="w-9 h-9 flex items-center justify-center bg-slate-50 hover:bg-slate-100 rounded-xl text-slate-400 hover:text-slate-900 transition-all border border-slate-200 group shrink-0" title="Quay lại danh sách">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
@@ -35,20 +35,18 @@
                 </a>
             </div>
         </div>
-    </div>
 
-    {{-- Mobile Tab Bar --}}
-    <div class="md:hidden sticky top-16 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-2">
-        <div class="flex items-center bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
-            <button onclick="Editor.setTab('links')" id="tab-btn-links-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all bg-white text-slate-800 shadow-sm">Liên kết</button>
-            <button onclick="Editor.setTab('appearance')" id="tab-btn-appearance-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Giao diện</button>
-            <button onclick="Editor.setTab('settings')" id="tab-btn-settings-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Cài đặt</button>
-            <button onclick="Editor.setTab('preview')" id="tab-btn-preview-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Xem trước</button>
+        {{-- Mobile Tab Bar --}}
+        <div class="md:hidden mb-6">
+            <div class="flex items-center bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
+                <button onclick="Editor.setTab('links')" id="tab-btn-links-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all bg-white text-slate-800 shadow-sm">Liên kết</button>
+                <button onclick="Editor.setTab('appearance')" id="tab-btn-appearance-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Giao diện</button>
+                <button onclick="Editor.setTab('settings')" id="tab-btn-settings-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Cài đặt</button>
+                <button onclick="Editor.setTab('preview')" id="tab-btn-preview-mobile" class="mobile-tab-btn flex-1 py-1.5 rounded-lg text-[10px] font-black font-outfit uppercase tracking-wider transition-all text-slate-400">Xem trước</button>
+            </div>
         </div>
-    </div>
 
-    {{-- Main Editor Layout --}}
-    <div class="max-w-6xl mx-auto px-3 sm:px-6 py-6 md:py-8">
+        {{-- Main Editor Layout --}}
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-start">
             
             {{-- Bảng điều khiển bên trái --}}
