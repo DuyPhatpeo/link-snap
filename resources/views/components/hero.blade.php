@@ -44,7 +44,12 @@
                     <input type="url" id="url" placeholder="Dán link dài muốn rút gọn vào đây..." required
                         class="w-full bg-transparent py-3 sm:py-3.5 pl-2.5 pr-16 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 outline-none">
                     
-                    <div class="absolute right-2.5 flex items-center gap-1">
+                    <div class="absolute right-2.5 flex items-center gap-1.5">
+                        <button type="button" onclick="navigator.clipboard && navigator.clipboard.readText().then(t => { const el = document.getElementById('url'); el.value = t; if(window.LinkManager) LinkManager.toggleClearButton('url'); })" 
+                            class="px-2 py-1 bg-slate-100/80 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 rounded-lg text-[10px] font-bold font-outfit flex items-center gap-1 transition-all active:scale-95" title="Dán liên kết từ bộ nhớ tạm">
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            <span>Dán</span>
+                        </button>
                         <button type="button" id="clearUrl" onclick="LinkManager.clearInput('url')" class="text-slate-400 hover:text-rose-500 hidden transition-all p-1 active:scale-90" title="Xóa">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
@@ -71,6 +76,26 @@
                 <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                 Chuyển hướng dưới 50ms
             </span>
+        </div>
+
+        {{-- Social Proof & Metrics Bar --}}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 pt-6 border-t border-slate-200/60 max-w-3xl mx-auto">
+            <div class="text-center p-3 bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <p class="text-xl sm:text-2xl font-black font-outfit text-slate-900 tracking-tight">1.2M+</p>
+                <p class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Links Rút Gọn</p>
+            </div>
+            <div class="text-center p-3 bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <p class="text-xl sm:text-2xl font-black font-outfit text-indigo-600 tracking-tight">48.5M+</p>
+                <p class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Lượt Click</p>
+            </div>
+            <div class="text-center p-3 bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <p class="text-xl sm:text-2xl font-black font-outfit text-emerald-600 tracking-tight">99.99%</p>
+                <p class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Uptime Ổn Định</p>
+            </div>
+            <div class="text-center p-3 bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-all">
+                <p class="text-xl sm:text-2xl font-black font-outfit text-violet-600 tracking-tight">0 VNĐ</p>
+                <p class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider mt-0.5">Miễn Phí Mãi Mãi</p>
+            </div>
         </div>
     </div>
 
