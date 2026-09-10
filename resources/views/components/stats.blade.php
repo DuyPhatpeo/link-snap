@@ -1,9 +1,9 @@
 <section class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="glass-card rounded-2xl sm:rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-lg">
+    <div class="glass-card rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-lg">
         
         {{-- Section Title --}}
         <div class="text-center mb-6">
-            <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-indigo-50 border border-indigo-100 rounded-full mb-2">
+            <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-indigo-50 border border-indigo-100 rounded-md mb-2">
                 <span class="text-[9px] font-black font-outfit uppercase tracking-widest text-indigo-600">Quy Trình Siêu Tốc</span>
             </div>
             <h2 class="text-xl sm:text-3xl font-black font-outfit text-slate-900 mb-2 tracking-tight">Rút gọn & Chia sẻ chỉ trong 3 bước</h2>

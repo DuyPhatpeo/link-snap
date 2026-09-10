@@ -1,5 +1,5 @@
 {{-- Header Section: Unified Identity & Quick Actions --}}
-<div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-sm mb-6 animate-in fade-in duration-500">
+<div class="glass-card rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-sm mb-6 animate-in fade-in duration-500">
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
         
         {{-- Left Info: Breadcrumb, Title & URLs --}}
@@ -14,12 +14,12 @@
                 </nav>
                 <span class="text-slate-300">&bull;</span>
                 <div class="flex items-center gap-2">
-                    <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 text-[9px] font-black font-outfit uppercase tracking-widest rounded-full border border-indigo-100">Báo cáo phân tích</span>
+                    <span class="px-2.5 py-0.5 bg-indigo-50 text-indigo-600 text-[9px] font-black font-outfit uppercase tracking-widest rounded-md border border-indigo-100">Báo cáo phân tích</span>
                     @if(!$link->is_active)
-                        <span class="px-2 py-0.5 bg-rose-50 border border-rose-200 text-rose-500 text-[9px] font-black uppercase tracking-widest rounded-full shadow-2xs">Đã khóa</span>
+                        <span class="px-2 py-0.5 bg-rose-50 border border-rose-200 text-rose-500 text-[9px] font-black uppercase tracking-widest rounded-md shadow-2xs">Đã khóa</span>
                     @else
-                        <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-600 text-[9px] font-black uppercase tracking-widest rounded-full flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-100 text-emerald-600 text-[9px] font-black uppercase tracking-widest rounded-md flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-sm bg-emerald-500"></span>
                             Hoạt động
                         </span>
                     @endif

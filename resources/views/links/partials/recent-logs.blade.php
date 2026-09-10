@@ -4,13 +4,13 @@
         <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between bg-white/40">
             <div>
                 <div class="flex items-center gap-1.5 mb-0.5">
-                    <span class="w-1.5 h-3.5 bg-emerald-500 rounded-full"></span>
+                    <span class="w-1.5 h-3.5 bg-emerald-500 rounded-sm"></span>
                     <h3 class="font-outfit text-sm font-black text-slate-900 tracking-tight">Nhật ký truy cập</h3>
                 </div>
                 <p class="text-[9px] font-bold uppercase tracking-wider text-slate-400 ml-3">{{ count($logs) }} lượt click gần nhất</p>
             </div>
-            <div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-100/80 rounded-full">
-                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+            <div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-100/80 rounded-md">
+                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse"></span>
                 <span class="text-[9px] font-bold text-emerald-700 font-outfit">Live</span>
             </div>
         </div>

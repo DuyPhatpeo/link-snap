@@ -126,7 +126,7 @@
                         $theme['bio_bg_color'] !== '#ffffff';
         @endphp
         <div id="preview-bio-container" 
-             class="w-full max-w-[340px] {{ $hasBioBg ? 'px-6 py-4 rounded-3xl shadow-sm border border-black/5' : '' }}" 
+             class="w-full max-w-[340px] {{ $hasBioBg ? 'px-6 py-4 rounded-2xl shadow-sm border border-black/5' : '' }}" 
              style="background-color: var(--bio-bg-color);">
             <p id="preview-bio-text" class="{{ $theme['bio_text_size'] ?? 'text-[14px]' }} {{ $theme['bio_text_weight'] ?? 'font-medium' }} leading-relaxed w-full" 
                style="color: var(--bio-text-color); text-align: var(--bio-align);">

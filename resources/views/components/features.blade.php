@@ -4,7 +4,7 @@
         
         {{-- Section Header --}}
         <div class="text-center max-w-3xl mx-auto mb-6">
-            <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-indigo-50 border border-indigo-100 rounded-full mb-2">
+            <div class="inline-flex items-center gap-2 px-3 py-0.5 bg-indigo-50 border border-indigo-100 rounded-md mb-2">
                 <span class="text-[9px] font-black font-outfit uppercase tracking-widest text-indigo-600">Hệ Sinh Thái Toàn Diện</span>
             </div>
             <h2 class="text-2xl sm:text-4xl font-black font-outfit text-slate-900 tracking-tight mb-2">
@@ -20,7 +20,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             
             {{-- Card 1: Thống kê chi tiết (Span 2 cols) --}}
-            <div class="md:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-200/80 relative overflow-hidden group hover:border-indigo-300 transition-all duration-300">
+            <div class="md:col-span-2 glass-card rounded-2xl p-5 sm:p-7 border border-slate-200/80 relative overflow-hidden group hover:border-indigo-300 transition-all duration-300">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
                     <div class="space-y-1.5 max-w-md">
                         <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-2 shadow-sm">
@@ -37,7 +37,7 @@
                 <div class="bg-slate-50/80 rounded-xl p-4 border border-slate-200/60">
                     <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
                         <span>Lưu lượng 7 ngày gần nhất</span>
-                        <span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full text-[10px]">+48.5% tăng trưởng</span>
+                        <span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md text-[10px]">+48.5% tăng trưởng</span>
                     </div>
                     <div class="h-14 flex items-end gap-2">
                         @foreach([35, 55, 40, 70, 60, 90, 100] as $h)
@@ -48,7 +48,7 @@
             </div>
 
             {{-- Card 2: QR Code Tức thì --}}
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 relative overflow-hidden group hover:border-violet-300 transition-all duration-300 flex flex-col justify-between">
+            <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200/80 relative overflow-hidden group hover:border-violet-300 transition-all duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-9 h-9 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-2 shadow-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -67,7 +67,7 @@
             </div>
 
             {{-- Card 3: Mật khẩu bảo vệ & Hạn dùng --}}
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/80 relative overflow-hidden group hover:border-amber-300 transition-all duration-300">
+            <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200/80 relative overflow-hidden group hover:border-amber-300 transition-all duration-300">
                 <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -82,7 +82,7 @@
             </div>
 
             {{-- Card 4: Tùy biến thẻ xem trước (OG Tags) (Span 2 cols) --}}
-            <div class="md:col-span-2 glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-200/80 relative overflow-hidden group hover:border-cyan-300 transition-all duration-300">
+            <div class="md:col-span-2 glass-card rounded-2xl p-5 sm:p-7 border border-slate-200/80 relative overflow-hidden group hover:border-cyan-300 transition-all duration-300">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div class="space-y-1.5 max-w-sm">
                         <div class="w-9 h-9 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-2 shadow-sm">
@@ -98,8 +98,8 @@
                         <div class="w-full h-20 bg-indigo-600 rounded-lg mb-2 flex items-center justify-center text-white text-[11px] font-bold font-outfit">
                             Thẻ xem trước
                         </div>
-                        <div class="h-2.5 w-3/4 bg-slate-200 rounded-full mb-1"></div>
-                        <div class="h-2 w-1/2 bg-slate-100 rounded-full"></div>
+                        <div class="h-2.5 w-3/4 bg-slate-200 rounded-sm mb-1"></div>
+                        <div class="h-2 w-1/2 bg-slate-100 rounded-sm"></div>
                     </div>
                 </div>
             </div>

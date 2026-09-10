@@ -2,7 +2,7 @@
 <div class="glass-card rounded-2xl p-5 border border-slate-200/80 shadow-sm animate-in fade-in duration-500 delay-200 space-y-4">
     <div class="flex items-center justify-between border-b border-slate-100 pb-3">
         <div class="flex items-center gap-2">
-            <span class="w-1.5 h-3.5 bg-indigo-600 rounded-full"></span>
+            <span class="w-1.5 h-3.5 bg-indigo-600 rounded-sm"></span>
             <h3 class="text-sm font-black font-outfit text-slate-900 tracking-tight">Cấu hình & Bảo vệ</h3>
         </div>
         <span class="text-[9px] font-bold uppercase tracking-wider text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">Thiết lập</span>
@@ -89,8 +89,8 @@
             @php
                 $clickPct = min(100, round(($link->clicks / max(1, $link->click_limit)) * 100));
             @endphp
-            <div class="w-full bg-slate-200 h-1.5 rounded-full mt-1.5 overflow-hidden">
-                <div class="bg-emerald-500 h-full rounded-full transition-all duration-700" data-pct="{{ $clickPct }}" style="width: 0%;"></div>
+            <div class="w-full bg-slate-200 h-1.5 rounded-md mt-1.5 overflow-hidden">
+                <div class="bg-emerald-500 h-full rounded-md transition-all duration-700" data-pct="{{ $clickPct }}" style="width: 0%;"></div>
             </div>
         </div>
         @endif

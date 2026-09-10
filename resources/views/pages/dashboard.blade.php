@@ -5,9 +5,9 @@
     <section class="mt-1 mb-4">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div class="space-y-1">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-indigo-50 border border-indigo-100 rounded-full">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 -ml-2"></span>
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-indigo-50 border border-indigo-100 rounded-md">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-sm bg-emerald-500 -ml-2"></span>
                     <span class="text-[10px] font-bold text-indigo-700 tracking-wide">Workspace Trực Tuyến</span>
                 </div>
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-black font-outfit text-slate-900 tracking-tight">
@@ -17,8 +17,8 @@
             </div>
             
             {{-- Date Pill --}}
-            <div class="hidden sm:flex items-center gap-2.5 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-slate-200/70 shadow-sm">
-                <div class="w-7 h-7 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+            <div class="hidden sm:flex items-center gap-2.5 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-slate-200/70 shadow-sm">
+                <div class="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -33,7 +33,7 @@
 
     {{-- Section: Hyper-Bar Shortener (Trọng tâm trải nghiệm) --}}
     <section class="w-full mb-5 relative">
-        <div class="relative rounded-2xl sm:rounded-full bg-white/90 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_15px_35px_-10px_rgba(99,102,241,0.15)] focus-within:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.25)] focus-within:border-indigo-500 transition-all duration-300">
+        <div class="relative rounded-2xl bg-white/90 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_15px_35px_-10px_rgba(99,102,241,0.15)] focus-within:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.25)] focus-within:border-indigo-500 transition-all duration-300">
             <form onsubmit="LinkManager.handleShorten(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
                 @csrf
                 {{-- Input URL chính --}}
@@ -66,7 +66,7 @@
 
                 {{-- Nút Submit --}}
                 <button type="submit" id="btnSubmit"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-6 sm:px-7 py-3 rounded-xl sm:rounded-full transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-6 sm:px-7 py-3 rounded-xl transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
                     Rút gọn link ✨
                 </button>
             </form>
@@ -74,7 +74,7 @@
 
         {{-- Nút Mở Tùy Chọn Nâng Cao --}}
         <div class="flex justify-center mt-2.5">
-            <button type="button" onclick="LinkManager.toggleAdvanced()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 hover:bg-white border border-slate-200/60 shadow-sm text-slate-500 hover:text-indigo-600 transition-all text-[11px] font-bold">
+            <button type="button" onclick="LinkManager.toggleAdvanced()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/70 hover:bg-white border border-slate-200/60 shadow-sm text-slate-500 hover:text-indigo-600 transition-all text-[11px] font-bold">
                 <span class="uppercase tracking-wider">Cấu hình bảo vệ & nâng cao</span>
                 <svg id="advancedIcon" xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
@@ -172,11 +172,11 @@
     </section>
 
     {{-- Section: Spotlight Banner Bio --}}
-    <section class="mb-6 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-slate-900 p-6 sm:p-7 text-white shadow-lg border border-slate-800">
+    <section class="mb-6 relative overflow-hidden rounded-2xl bg-slate-900 p-6 sm:p-7 text-white shadow-lg border border-slate-800">
         <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="max-w-xl space-y-2 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-slate-800 rounded-full border border-slate-700">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-slate-800 rounded-md border border-slate-700">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-400"></span>
                     <span class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Tính năng nổi bật</span>
                 </div>
                 <h2 class="text-xl sm:text-2xl font-black font-outfit leading-snug">

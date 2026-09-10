@@ -5,11 +5,11 @@
         <div class="space-y-0.5">
             <span class="text-[9px] font-black font-outfit uppercase tracking-wider text-indigo-600">Quản lý</span>
             <h3 class="text-base sm:text-lg font-black font-outfit text-slate-900 tracking-tight flex items-center gap-1.5">
-                <span class="w-1.5 h-4 bg-indigo-600 rounded-full"></span>
+                <span class="w-1.5 h-4 bg-indigo-600 rounded-sm"></span>
                 Liên kết gần đây
             </h3>
         </div>
-        <a href="{{ route('links.index') }}" class="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors uppercase tracking-wider flex items-center gap-1 bg-indigo-50 hover:bg-indigo-100/70 px-2.5 py-1 rounded-full">
+        <a href="{{ route('links.index') }}" class="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors uppercase tracking-wider flex items-center gap-1 bg-indigo-50 hover:bg-indigo-100/70 px-2.5 py-1 rounded-md">
             <span>Tất cả</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
@@ -36,14 +36,14 @@
                 @for ($i = 0; $i < 3; $i++)
                 <div class="p-3.5 sm:p-4 flex items-center gap-3">
                     <div class="flex-1 space-y-2">
-                        <div class="h-3 bg-slate-200/60 rounded-full w-3/4"></div>
-                        <div class="h-2 bg-slate-200/40 rounded-full w-1/2"></div>
+                        <div class="h-3 bg-slate-200/60 rounded-md w-3/4"></div>
+                        <div class="h-2 bg-slate-200/40 rounded-md w-1/2"></div>
                         <div class="flex gap-2 pt-0.5">
-                            <div class="h-4 bg-slate-200/50 rounded-full w-16"></div>
-                            <div class="h-4 bg-slate-200/50 rounded-full w-12"></div>
+                            <div class="h-4 bg-slate-200/50 rounded-md w-16"></div>
+                            <div class="h-4 bg-slate-200/50 rounded-md w-12"></div>
                         </div>
                     </div>
-                    <div class="w-7 h-7 bg-slate-200/60 rounded-full shrink-0"></div>
+                    <div class="w-7 h-7 bg-slate-200/60 rounded-lg shrink-0"></div>
                 </div>
                 @endfor
             </div>

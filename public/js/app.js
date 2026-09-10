@@ -597,7 +597,7 @@ const LinkManager = {
                             </div>
                             <div class="flex items-center gap-3 pt-0.5">
                                 <span class="text-[10px] font-medium text-slate-400 font-mono">${link.created_at}</span>
-                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
                                     ${link.clicks} Click
                                 </span>
                             </div>
@@ -785,12 +785,12 @@ const LinkManager = {
                         </div>
                         
                         <div class="flex flex-wrap items-center gap-2 text-[10px] font-bold">
-                            <span class="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100/80 font-mono">
-                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                            <span class="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100/80 font-mono">
+                                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-sm animate-pulse"></span>
                                 ${log.ip}
                             </span>
-                            <span class="inline-flex items-center gap-1 text-slate-600 bg-slate-50 border border-slate-200/60 px-2 py-1 rounded-full">${osIcon} ${log.os}</span>
-                            <span class="inline-flex items-center gap-1 text-slate-600 bg-slate-50 border border-slate-200/60 px-2 py-1 rounded-full">${browserIcon} ${log.browser}</span>
+                            <span class="inline-flex items-center gap-1 text-slate-600 bg-slate-50 border border-slate-200/60 px-2 py-1 rounded-md">${osIcon} ${log.os}</span>
+                            <span class="inline-flex items-center gap-1 text-slate-600 bg-slate-50 border border-slate-200/60 px-2 py-1 rounded-md">${browserIcon} ${log.browser}</span>
                         </div>
                     </div>
                 `;

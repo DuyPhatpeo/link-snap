@@ -19,8 +19,8 @@
             </div>
 
             <div class="text-center mb-8">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-500 animate-pulse"></span>
                     Bảo vệ bằng mã khóa
                 </span>
                 <h1 class="text-2xl font-black text-slate-900 tracking-tight font-heading mb-2">Liên kết được bảo vệ</h1>

@@ -75,15 +75,15 @@
         <div class="absolute -top-[20%] left-1/2 -translate-x-1/2 w-[80vw] max-w-[900px] h-[350px] bg-indigo-50/70 rounded-full blur-[120px]"></div>
     </div>
 
-    <!-- Floating Pill Navigation (Thanh điều hướng nổi) -->
+    <!-- Floating Navigation (Thanh điều hướng bo tròn vuông) -->
     <header class="sticky top-2.5 z-50 max-w-7xl mx-auto px-3 sm:px-6 transition-all duration-300">
-        <nav class="glass-pill rounded-full px-4 sm:px-5 py-2 flex items-center justify-between transition-all duration-300">
+        <nav class="glass-card rounded-2xl px-4 sm:px-5 py-2.5 flex items-center justify-between transition-all duration-300">
             
             {{-- Brand Logo --}}
             <div class="flex items-center gap-3 select-none cursor-pointer group active:scale-95 transition-all" onclick="window.location.assign('/')">
-                <div class="w-10 h-10 rounded-2xl bg-indigo-600 p-[2px] shadow-sm group-hover:bg-indigo-700 transition-all duration-300">
-                    <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center p-1.5">
-                        <img src="{{ asset('logo.png') }}" alt="LinkSnap" class="w-full h-full object-contain rounded-lg">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 p-[2px] shadow-sm group-hover:bg-indigo-700 transition-all duration-300">
+                    <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
+                        <img src="{{ asset('logo.png') }}" alt="LinkSnap" class="w-full h-full object-contain rounded-md">
                     </div>
                 </div>
                 <span class="text-xl sm:text-2xl font-black font-outfit tracking-tight text-slate-900 group-hover:opacity-95">
@@ -93,11 +93,11 @@
 
             {{-- Center Navigation Links (Desktop) --}}
             @auth
-            <div class="hidden md:flex items-center gap-1 bg-slate-100/70 p-1 rounded-full border border-slate-200/50">
-                <a href="/" class="px-5 py-2 rounded-full text-xs font-bold tracking-wide transition-all {{ Request::is('/') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
+            <div class="hidden md:flex items-center gap-1 bg-slate-100/70 p-1 rounded-xl border border-slate-200/50">
+                <a href="/" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('/') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
                     Liên kết của tôi
                 </a>
-                <a href="/bio" class="px-5 py-2 rounded-full text-xs font-bold tracking-wide transition-all {{ Request::is('bio*') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
+                <a href="/bio" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('bio*') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
                     Trang Bio
                 </a>
             </div>
@@ -107,7 +107,7 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <!-- Nút Shortcut Rút Gọn Nhanh (Ctrl + K) -->
                 <button onclick="window.globalActionShortcut && window.globalActionShortcut()" 
-                        class="hidden sm:flex items-center gap-2 px-3.5 py-2 bg-slate-50 hover:bg-white border border-slate-200/80 rounded-full text-slate-400 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm group active:scale-95" 
+                        class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-50 hover:bg-white border border-slate-200/80 rounded-xl text-slate-400 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm group active:scale-95" 
                         title="Rút gọn link nhanh">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 group-hover:text-indigo-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -119,17 +119,17 @@
                 </button>
 
                 @auth
-                    {{-- User Profile Pill --}}
-                    <div class="hidden md:flex items-center gap-3 pl-2 border-l border-slate-200">
-                        <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200/80 pl-2.5 pr-3 py-1.5 rounded-full">
-                            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white font-black text-[10px] flex items-center justify-center">
+                    {{-- User Profile Pill -> Squircle --}}
+                    <div class="hidden md:flex items-center gap-2.5 pl-2 border-l border-slate-200">
+                        <div class="flex items-center gap-2 bg-slate-50 border border-slate-200/80 pl-2 pr-2.5 py-1.5 rounded-xl">
+                            <div class="w-6 h-6 rounded-lg bg-indigo-600 text-white font-black text-[10px] flex items-center justify-center">
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                             </div>
                             <span class="text-xs font-bold text-slate-700 max-w-[120px] truncate">{{ Auth::user()->name }}</span>
                         </div>
                         <form action="/api/logout" method="POST" class="inline">
                             @csrf
-                            <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-full transition-all" title="Đăng xuất">
+                            <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all" title="Đăng xuất">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                 </svg>
@@ -138,7 +138,7 @@
                     </div>
 
                     {{-- Mobile Hamburger --}}
-                    <button onclick="Navbar.openMobileMenu()" class="flex md:hidden p-2 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-full transition-all" aria-label="Mở menu">
+                    <button onclick="Navbar.openMobileMenu()" class="flex md:hidden p-2 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 rounded-xl transition-all" aria-label="Mở menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
@@ -146,10 +146,10 @@
                 @else
                     {{-- Guest Buttons --}}
                     <div class="flex items-center gap-2">
-                        <button onclick="Modal.open('loginModal')" class="text-xs font-bold text-slate-600 hover:text-slate-900 px-3 sm:px-4 py-2 rounded-full hover:bg-slate-100 transition-all">
+                        <button onclick="Modal.open('loginModal')" class="text-xs font-bold text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-xl hover:bg-slate-100 transition-all">
                             Đăng nhập
                         </button>
-                        <button onclick="Modal.open('registerModal')" class="text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-5 py-2 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
+                        <button onclick="Modal.open('registerModal')" class="text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-xl shadow-sm hover:shadow transition-all active:scale-95">
                             Bắt đầu ngay
                         </button>
                     </div>

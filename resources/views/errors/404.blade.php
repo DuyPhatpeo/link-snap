@@ -42,10 +42,10 @@
     <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-violet-100/50 rounded-full blur-[120px]"></div>
     <div class="absolute inset-0 bg-grid opacity-50"></div>
 
-    <div class="max-w-lg w-full glass-card rounded-2xl sm:rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-200/80 relative z-10 text-center animate-in fade-in zoom-in-95 duration-500">
+    <div class="max-w-lg w-full glass-card rounded-2xl p-8 sm:p-12 shadow-xl border border-slate-200/80 relative z-10 text-center animate-in fade-in zoom-in-95 duration-500">
         {{-- Status Code Badge --}}
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-rose-50 text-rose-600 rounded-full font-bold text-xs uppercase tracking-wider mb-6 border border-rose-100 shadow-sm">
-            <span class="w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-rose-50 text-rose-600 rounded-md font-bold text-xs uppercase tracking-wider mb-6 border border-rose-100 shadow-sm">
+            <span class="w-2 h-2 bg-rose-500 rounded-sm animate-pulse"></span>
             Mã lỗi: 404
         </div>
 

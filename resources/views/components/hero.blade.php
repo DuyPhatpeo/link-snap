@@ -5,8 +5,8 @@
     <section class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6">
         
         {{-- Brand Chip --}}
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-md rounded-full mb-3 border border-slate-200/80 shadow-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-md rounded-md mb-3 border border-slate-200/80 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-sm bg-indigo-600"></span>
             <span class="text-[10px] font-black font-outfit text-slate-700 tracking-wider uppercase">LinkSnap 2.0 &bull; Nền Tảng Thế Hệ Mới</span>
         </div>
 
@@ -21,10 +21,10 @@
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-2.5">
-            <button onclick="Modal.open('registerModal')" class="px-6 py-3 bg-slate-900 hover:bg-black text-white rounded-full font-bold font-outfit text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all active:scale-95">
+            <button onclick="Modal.open('registerModal')" class="px-6 py-3 bg-slate-900 hover:bg-black text-white rounded-xl font-bold font-outfit text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all active:scale-95">
                 Bắt đầu miễn phí &rarr;
             </button>
-            <a href="#how-it-works" class="px-5 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-full font-bold font-outfit text-xs uppercase tracking-wider shadow-sm transition-all">
+            <a href="#how-it-works" class="px-5 py-3 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl font-bold font-outfit text-xs uppercase tracking-wider shadow-sm transition-all">
                 Xem tính năng
             </a>
         </div>
@@ -32,7 +32,7 @@
 
     {{-- Guest URL Shortener Hyper-Bar --}}
     <div class="w-full max-w-4xl mx-auto pt-6 sm:pt-8 px-4 sm:px-6 relative">
-        <div class="relative rounded-2xl sm:rounded-full bg-white/95 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_20px_50px_-15px_rgba(99,102,241,0.2)] focus-within:shadow-[0_20px_50px_-10px_rgba(99,102,241,0.3)] focus-within:border-indigo-500 transition-all duration-300">
+        <div class="relative rounded-2xl bg-white/95 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_20px_50px_-15px_rgba(99,102,241,0.2)] focus-within:shadow-[0_20px_50px_-10px_rgba(99,102,241,0.3)] focus-within:border-indigo-500 transition-all duration-300">
             <form onsubmit="LinkManager.handleShorten(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
                 @csrf
                 <div class="flex-1 relative flex items-center">
@@ -52,7 +52,7 @@
                 </div>
 
                 <button type="submit" id="btnSubmit"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-7 sm:px-8 py-3 rounded-xl sm:rounded-full transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold font-outfit px-7 sm:px-8 py-3 rounded-xl transition-all shadow-sm hover:shadow uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
                     Rút gọn ngay ✨
                 </button>
             </form>

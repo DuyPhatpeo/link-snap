@@ -3,9 +3,9 @@
 {{-- Skeleton loading (hiển thị khi đang nạp dữ liệu từ API) --}}
 <div id="statsWidgetSkeleton" class="w-full">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse">
-        <div class="h-32 bg-slate-200/50 rounded-3xl"></div>
-        <div class="h-32 bg-slate-200/50 rounded-3xl"></div>
-        <div class="h-32 md:h-auto md:row-span-1 bg-slate-200/50 rounded-3xl"></div>
+        <div class="h-32 bg-slate-200/50 rounded-2xl"></div>
+        <div class="h-32 bg-slate-200/50 rounded-2xl"></div>
+        <div class="h-32 md:h-auto md:row-span-1 bg-slate-200/50 rounded-2xl"></div>
     </div>
 </div>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="flex items-baseline gap-2">
                 <div id="statTotalLinks" class="text-2xl sm:text-3xl font-black font-outfit text-slate-900 tracking-tight tabular-nums">—</div>
-                <div id="statTodayLinks" class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                <div id="statTodayLinks" class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
                     <span>+0 hôm nay</span>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="flex items-baseline gap-2">
                 <div id="statTotalClicks" class="text-2xl sm:text-3xl font-black font-outfit text-slate-900 tracking-tight tabular-nums">—</div>
-                <div id="statTodayClicks" class="text-[11px] font-bold text-violet-600 bg-violet-50 px-2 py-0.5 rounded-full">
+                <div id="statTodayClicks" class="text-[11px] font-bold text-violet-600 bg-violet-50 px-2 py-0.5 rounded-md">
                     <span>+0 hôm nay</span>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-200/80 flex flex-col justify-between hover:border-cyan-300 transition-all duration-300">
             <div class="flex items-center justify-between mb-1.5">
                 <span class="text-[10px] font-black font-outfit uppercase tracking-wider text-slate-700">Xu hướng truy cập (14 ngày)</span>
-                <span class="text-[9px] font-bold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-full">Trực tiếp</span>
+                <span class="text-[9px] font-bold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-md">Trực tiếp</span>
             </div>
             <div class="w-full h-20 relative mt-1">
                 <canvas id="clicksChart" class="w-full h-full"></canvas>

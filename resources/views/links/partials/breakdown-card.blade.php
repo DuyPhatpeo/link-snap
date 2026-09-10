@@ -3,7 +3,7 @@
     {{-- OS Distribution --}}
     <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
         <div class="flex items-center gap-2 mb-1">
-            <span class="w-1.5 h-4 bg-indigo-600 rounded-full"></span>
+            <span class="w-1.5 h-4 bg-indigo-600 rounded-sm"></span>
             <h3 class="text-sm font-black font-outfit text-slate-900 tracking-tight">Hệ điều hành</h3>
         </div>
         <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-5 ml-3.5">Phân bố thiết bị truy cập</p>
@@ -23,8 +23,8 @@
                         <span class="text-xs font-bold text-slate-700 flex items-center gap-2">{{ $icon }} {{ $os }}</span>
                         <span class="text-[10px] font-bold font-mono text-slate-400">{{ $count }} ({{ $pct }}%)</span>
                     </div>
-                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
-                        <div class="{{ $bar }} h-full rounded-full transition-all duration-1000 ease-out shadow-sm" @style(['width' => $pct . '%'])></div>
+                    <div class="h-2 bg-slate-100 rounded-md overflow-hidden">
+                        <div class="{{ $bar }} h-full rounded-md transition-all duration-1000 ease-out shadow-sm" @style(['width' => $pct . '%'])></div>
                     </div>
                 </div>
                 @endforeach
@@ -37,7 +37,7 @@
     {{-- Browser Distribution --}}
     <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-sm">
         <div class="flex items-center gap-2 mb-1">
-            <span class="w-1.5 h-4 bg-violet-600 rounded-full"></span>
+            <span class="w-1.5 h-4 bg-violet-600 rounded-sm"></span>
             <h3 class="text-sm font-black font-outfit text-slate-900 tracking-tight">Trình duyệt</h3>
         </div>
         <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-5 ml-3.5">Phân bố trình duyệt web</p>
@@ -57,8 +57,8 @@
                         <span class="text-xs font-bold text-slate-700 flex items-center gap-2">{{ $icon }} {{ $browser }}</span>
                         <span class="text-[10px] font-bold font-mono text-slate-400">{{ $count }} ({{ $pct }}%)</span>
                     </div>
-                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
-                        <div class="{{ $bar }} h-full rounded-full transition-all duration-1000 ease-out shadow-sm" @style(['width' => $pct . '%'])></div>
+                    <div class="h-2 bg-slate-100 rounded-md overflow-hidden">
+                        <div class="{{ $bar }} h-full rounded-md transition-all duration-1000 ease-out shadow-sm" @style(['width' => $pct . '%'])></div>
                     </div>
                 </div>
                 @endforeach

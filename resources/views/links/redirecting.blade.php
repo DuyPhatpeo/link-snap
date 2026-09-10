@@ -33,8 +33,8 @@
 
             {{-- Badge --}}
             <div class="mb-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-ping"></span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-500 animate-ping"></span>
                     Đang chuyển hướng an toàn
                 </span>
             </div>
@@ -48,8 +48,8 @@
             </p>
 
             {{-- Thanh tiến trình Loading bar --}}
-            <div class="w-56 sm:w-64 h-2 bg-slate-100 rounded-full mx-auto overflow-hidden relative mb-4">
-                <div class="absolute inset-y-0 left-0 bg-indigo-600 w-1/3 rounded-full animate-[loading_1.4s_infinite_ease-in-out]"></div>
+            <div class="w-56 sm:w-64 h-2 bg-slate-100 rounded-md mx-auto overflow-hidden relative mb-4">
+                <div class="absolute inset-y-0 left-0 bg-indigo-600 w-1/3 rounded-md animate-[loading_1.4s_infinite_ease-in-out]"></div>
             </div>
             
             <p class="text-xs font-semibold text-slate-400">

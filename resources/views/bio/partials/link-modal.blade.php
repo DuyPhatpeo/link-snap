@@ -1,20 +1,20 @@
 {{-- Modal Thêm/Sửa Link Bio --}}
 <div id="linkModal" class="fixed inset-0 z-[100] hidden overflow-y-auto bg-slate-900/60 backdrop-blur-sm">
     <div onclick="if(event.target===this) Editor.closeLinkModal()" class="flex min-h-full items-center justify-center p-4">
-        <div class="relative w-full max-w-lg glass-card rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-10 border border-slate-200/80 animate-in zoom-in-95 duration-300">
+        <div class="relative w-full max-w-lg glass-card rounded-2xl shadow-2xl p-6 sm:p-9 border border-slate-200/80 animate-in zoom-in-95 duration-300">
             
             {{-- Nút đóng modal --}}
             <button onclick="Editor.closeLinkModal()" type="button" aria-label="Đóng"
-                class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 w-9 h-9 rounded-xl flex items-center justify-center transition-all">
+                class="absolute top-6 right-6 text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 w-8 h-8 rounded-lg flex items-center justify-center transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
 
             {{-- Tiêu đề --}}
-            <div class="mb-6">
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100 mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+            <div class="mb-5">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-100 mb-2">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-500"></span>
                     Bio Link Editor
                 </div>
                 <h2 id="modalTitle" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight font-heading">

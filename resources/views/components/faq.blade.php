@@ -1,4 +1,4 @@
-<section class="py-8 bg-white/40 backdrop-blur-md rounded-3xl max-w-5xl mx-auto px-4 sm:px-6 my-6 border border-slate-200/50">
+<section class="py-8 bg-white/40 backdrop-blur-md rounded-2xl max-w-5xl mx-auto px-4 sm:px-6 my-6 border border-slate-200/50">
     <div class="max-w-3xl mx-auto">
         {{-- Section Header --}}
         <div class="text-center mb-6">
@@ -12,7 +12,7 @@
             <div class="group border border-slate-200/80 rounded-2xl bg-white/80 overflow-hidden transition-all hover:border-indigo-300">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')" class="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-all outline-none">
                     <span class="text-sm sm:text-base font-black font-outfit text-slate-800 tracking-tight">Liên kết rút gọn có bị hết hạn không?</span>
-                    <div class="arrow w-7 h-7 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
+                    <div class="arrow w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
                     </div>
                 </button>
@@ -25,7 +25,7 @@
             <div class="group border border-slate-200/80 rounded-2xl bg-white/80 overflow-hidden transition-all hover:border-indigo-300">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')" class="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-all outline-none">
                     <span class="text-sm sm:text-base font-black font-outfit text-slate-800 tracking-tight">Tính năng bảo mật mật khẩu hoạt động như thế nào?</span>
-                    <div class="arrow w-7 h-7 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
+                    <div class="arrow w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
                     </div>
                 </button>
@@ -38,7 +38,7 @@
             <div class="group border border-slate-200/80 rounded-2xl bg-white/80 overflow-hidden transition-all hover:border-indigo-300">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')" class="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-all outline-none">
                     <span class="text-sm sm:text-base font-black font-outfit text-slate-800 tracking-tight">Tôi có thể thay đổi URL gốc sau khi đã rút gọn không?</span>
-                    <div class="arrow w-7 h-7 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
+                    <div class="arrow w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
                     </div>
                 </button>
@@ -51,7 +51,7 @@
             <div class="group border border-slate-200/80 rounded-2xl bg-white/80 overflow-hidden transition-all hover:border-indigo-300">
                 <button onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')" class="w-full flex items-center justify-between p-4 sm:p-5 text-left transition-all outline-none">
                     <span class="text-sm sm:text-base font-black font-outfit text-slate-800 tracking-tight">Làm thế nào để tùy chỉnh Social Preview (Thumbnail)?</span>
-                    <div class="arrow w-7 h-7 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
+                    <div class="arrow w-7 h-7 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 transition-transform duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" /></svg>
                     </div>
                 </button>
