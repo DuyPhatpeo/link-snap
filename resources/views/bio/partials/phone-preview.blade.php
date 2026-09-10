@@ -1,7 +1,7 @@
 {{-- Khung Mockup Điện thoại bên phải (Desktop Sticky Live Preview) --}}
 <div class="md:col-span-5 md:sticky md:top-24 hidden md:block">
     <div class="text-center mb-3 flex items-center justify-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="w-2 h-2 rounded-sm bg-emerald-500 animate-pulse"></span>
         <span class="text-[10px] font-black font-outfit text-slate-400 uppercase tracking-widest">Xem trước thời gian thực</span>
     </div>
     <div class="relative mx-auto" style="width: 300px">

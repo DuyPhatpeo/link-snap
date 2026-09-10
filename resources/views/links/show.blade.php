@@ -3,8 +3,8 @@
 @section('title', 'Thống kê - ' . str_replace(['http://', 'https://'], '', url($link->short_code)) . ' · LinkSnap')
 
 @section('content')
-<div class="min-h-screen pt-6 sm:pt-8 pb-24">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6">
+<div class="min-h-screen pt-4 sm:pt-6 pb-20">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6">
 
         {{-- Header Section --}}
         @include('links.partials.header')

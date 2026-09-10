@@ -1,5 +1,5 @@
 {{-- === BẢNG ĐIỀU KHIỂN DÀNH CHO USER ĐÃ ĐĂNG NHẬP === --}}
-<div class="flex flex-col px-3 sm:px-6 max-w-7xl mx-auto pt-4 sm:pt-6 pb-10">
+<div class="flex flex-col px-3 sm:px-6 max-w-6xl mx-auto pt-4 sm:pt-6 pb-12">
     
     {{-- Section: Welcome & Status Chip --}}
     <section class="mt-1 mb-4">
@@ -10,10 +10,10 @@
                     <span class="w-1.5 h-1.5 rounded-sm bg-emerald-500 -ml-2"></span>
                     <span class="text-[10px] font-bold text-indigo-700 tracking-wide">Workspace Trực Tuyến</span>
                 </div>
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black font-outfit text-slate-900 tracking-tight">
+                <h1 class="text-2xl sm:text-3xl font-black font-outfit text-slate-900 tracking-tight">
                     Xin chào, <span class="text-gradient-aurora">{{ auth()->user()->name }}</span>!
                 </h1>
-                <p class="text-slate-500 font-medium text-xs">Tạo liên kết rút gọn mới hoặc cập nhật trang Bio của bạn ngay bên dưới.</p>
+                <p class="text-slate-500 font-medium text-xs">Tạo liên kết rút gọn mới hoặc theo dõi số liệu thời gian thực bên dưới.</p>
             </div>
             
             {{-- Date Pill --}}
@@ -32,7 +32,7 @@
     </section>
 
     {{-- Section: Hyper-Bar Shortener (Trọng tâm trải nghiệm) --}}
-    <section class="w-full mb-5 relative">
+    <section class="w-full mb-6 relative">
         <div class="relative rounded-2xl bg-white/90 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_15px_35px_-10px_rgba(99,102,241,0.15)] focus-within:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.25)] focus-within:border-indigo-500 transition-all duration-300">
             <form onsubmit="LinkManager.handleShorten(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
                 @csrf
@@ -135,72 +135,36 @@
         </div>
     </section>
 
-    {{-- Section: Bento Quick Actions (3 Card tính năng) --}}
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-6">
-        <div class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-indigo-300 hover:shadow-lg transition-all duration-300">
-            <div class="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-3 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
-                </svg>
-            </div>
-            <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5">Rút gọn liên kết</h3>
-            <p class="text-xs text-slate-500 leading-relaxed">Tạo mã QR tức thì, gắn thẻ quản lý và đặt mật khẩu bảo mật tuyệt đối.</p>
-        </div>
-
-        <a href="{{ route('bio.index') }}" class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-violet-300 hover:shadow-lg transition-all duration-300 group">
-            <div class="w-9 h-9 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600 mb-3 shadow-sm group-hover:scale-105 transition-transform">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-            </div>
-            <div class="flex items-center justify-between">
-                <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5 group-hover:text-violet-600 transition-colors">Trang Bio Cá Nhân</h3>
-                <span class="text-xs font-bold text-violet-600">&rarr;</span>
-            </div>
-            <p class="text-xs text-slate-500 leading-relaxed">Tập hợp toàn bộ liên kết mạng xã hội vào một trang cá nhân chuẩn TikTok/Instagram.</p>
-        </a>
-
-        <div class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-cyan-300 hover:shadow-lg transition-all duration-300">
-            <div class="w-9 h-9 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-3 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-            </div>
-            <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5">Thống kê Click Thông Minh</h3>
-            <p class="text-xs text-slate-500 leading-relaxed">Theo dõi chi tiết số lượt nhấp, thiết bị, hệ điều hành và nguồn truy cập thời gian thực.</p>
-        </div>
-    </section>
-
-    {{-- Section: Spotlight Banner Bio --}}
-    <section class="mb-6 relative overflow-hidden rounded-2xl bg-slate-900 p-6 sm:p-7 text-white shadow-lg border border-slate-800">
-        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="max-w-xl space-y-2 text-center md:text-left">
-                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-slate-800 rounded-md border border-slate-700">
-                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-400"></span>
-                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Tính năng nổi bật</span>
-                </div>
-                <h2 class="text-xl sm:text-2xl font-black font-outfit leading-snug">
-                    Tạo trang cá nhân ấn tượng chỉ trong 60 giây
-                </h2>
-                <p class="text-slate-300 text-xs font-medium leading-relaxed">
-                    Tùy biến avatar, màu nền, các nút liên kết động và xem trước thời gian thực trên khung điện thoại di động.
-                </p>
-            </div>
-            <a href="{{ route('bio.index') }}" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-black font-outfit rounded-xl shadow-sm transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-wider shrink-0">
-                Bắt đầu tạo Bio &rarr;
-            </a>
-        </div>
-    </section>
-
-    {{-- Section: Stats & Analytics Widget --}}
+    {{-- Section: Stats & Analytics Widget (Hiển thị ngay dưới Shortener) --}}
     <section class="mb-6">
         @include('components.stats-widget')
     </section>
 
     {{-- Section: Two-Column Bento Panels (Links & Click Logs) --}}
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start mb-8">
         @include('components.links-panel')
         @include('components.logs-panel')
+    </section>
+
+    {{-- Section: Spotlight Banner Bio (Chân trang làm việc) --}}
+    <section class="relative overflow-hidden rounded-2xl bg-slate-900 p-5 sm:p-6 text-white shadow-lg border border-slate-800">
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="max-w-xl space-y-1.5 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-slate-800 rounded-md border border-slate-700">
+                    <span class="w-1.5 h-1.5 rounded-sm bg-indigo-400"></span>
+                    <span class="text-[9px] font-black uppercase tracking-widest text-indigo-300">Bio Profile Builder</span>
+                </div>
+                <h2 class="text-lg sm:text-xl font-black font-outfit leading-snug">
+                    Tạo trang cá nhân Bio chuyên nghiệp chỉ trong 60 giây
+                </h2>
+                <p class="text-slate-300 text-xs font-medium leading-relaxed">
+                    Tập hợp tất cả liên kết mạng xã hội vào một trang duy nhất chuẩn TikTok/Instagram với giao diện tuỳ biến.
+                </p>
+            </div>
+            <a href="{{ route('bio.index') }}" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black font-outfit rounded-xl shadow-sm transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-wider shrink-0">
+                Quản lý trang Bio &rarr;
+            </a>
+        </div>
     </section>
 
 </div>
