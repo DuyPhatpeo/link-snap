@@ -96,22 +96,38 @@ const Editor = {
     },
 
     detectPlatform(url) {
-        if (!url) return;
+        const badge = document.getElementById("detectedBadge");
+        const badgeText = document.getElementById("detectedText");
+        if (!url) {
+            if (badge) badge.classList.add("hidden");
+            return;
+        }
         const labelInput = document.getElementById("linkLabel");
         const iconInput = document.getElementById("linkIcon");
+        let detected = false;
         for (const [key, platform] of Object.entries(this.platforms)) {
             if (platform.regex.test(url)) {
                 this.setType("social_icon");
                 if (labelInput && !labelInput.value) labelInput.value = platform.name;
                 if (iconInput) iconInput.value = platform.icon;
+                if (badge && badgeText) {
+                    badgeText.innerText = `Đã nhận diện: ${platform.name}`;
+                    badge.classList.remove("hidden");
+                }
+                detected = true;
                 break;
             }
+        }
+        if (!detected && badge) {
+            badge.classList.add("hidden");
         }
     },
 
     openLinkModal() {
         document.getElementById("linkForm").reset();
         document.getElementById("linkIdInput").value = "";
+        const badge = document.getElementById("detectedBadge");
+        if (badge) badge.classList.add("hidden");
         this.setType("button");
         document.getElementById("modalTitle").innerText = "Thêm liên kết";
         document.getElementById("linkModal").classList.remove("hidden");
@@ -126,6 +142,8 @@ const Editor = {
         document.getElementById("linkLabel").value = btn.getAttribute("data-label");
         document.getElementById("linkUrl").value = btn.getAttribute("data-url");
         document.getElementById("linkIcon").value = btn.getAttribute("data-icon") || "";
+        const badge = document.getElementById("detectedBadge");
+        if (badge) badge.classList.add("hidden");
         this.setType(btn.getAttribute("data-type") || "button");
         document.getElementById("modalTitle").innerText = "Chỉnh sửa liên kết";
         document.getElementById("linkModal").classList.remove("hidden");
@@ -353,12 +371,18 @@ const Editor = {
         document.getElementById("linkType").value = type;
         const b = document.getElementById("type-btn-button");
         const s = document.getElementById("type-btn-social_icon");
-        if (type === "button") { 
-            b.classList.add("bg-white", "shadow-sm"); 
-            s.classList.remove("bg-white", "shadow-sm"); 
-        } else { 
-            s.classList.add("bg-white", "shadow-sm"); 
-            b.classList.remove("bg-white", "shadow-sm"); 
+        if (b && s) {
+            if (type === "button") { 
+                b.classList.add("bg-white", "shadow-sm", "text-indigo-600"); 
+                b.classList.remove("text-slate-600"); 
+                s.classList.remove("bg-white", "shadow-sm", "text-indigo-600"); 
+                s.classList.add("text-slate-600"); 
+            } else { 
+                s.classList.add("bg-white", "shadow-sm", "text-indigo-600"); 
+                s.classList.remove("text-slate-600"); 
+                b.classList.remove("bg-white", "shadow-sm", "text-indigo-600"); 
+                b.classList.add("text-slate-600"); 
+            }
         }
     },
 
