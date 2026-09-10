@@ -31,11 +31,12 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script src="{{ asset('js/link-details.js') }}" defer></script>
+<script id="dailyClicksData" type="application/json">@json($dailyClicks)</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const dailyClicks = @json($dailyClicks);
+    const dataEl = document.getElementById('dailyClicksData');
+    const dailyClicks = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
     if (window.initLinkChart) {
         initLinkChart(dailyClicks);
     }
