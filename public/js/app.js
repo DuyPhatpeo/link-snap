@@ -244,29 +244,45 @@ const AlertUI = {
 };
 
 /**
- * Toast Notification System
+ * Toast Notification System (Light Theme & Squircle)
  */
 const Toast = {
     show(message, type = 'info') {
         if (this.currentToast) this.currentToast.remove();
 
         const toast = document.createElement('div');
-        toast.className = `fixed bottom-6 right-6 px-5 py-3.5 rounded-2xl shadow-2xl z-[100] transform transition-all duration-300 translate-y-6 opacity-0 flex items-center gap-3 font-bold text-xs tracking-wide backdrop-blur-xl border`;
+        toast.className = `fixed bottom-6 right-6 px-4 py-3 rounded-xl shadow-xl shadow-slate-900/10 z-[100] transform transition-all duration-300 translate-y-6 opacity-0 flex items-center gap-3 font-semibold text-xs tracking-wide bg-white/95 backdrop-blur-xl border`;
 
-        const icons = {
-            success: `<svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`,
-            error: `<svg class="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`,
-            info: `<svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+        const typeConfig = {
+            success: {
+                border: 'border-emerald-200/90 text-slate-800',
+                iconBox: 'bg-emerald-50 text-emerald-600 border border-emerald-100',
+                icon: `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>`
+            },
+            error: {
+                border: 'border-rose-200/90 text-slate-800',
+                iconBox: 'bg-rose-50 text-rose-600 border border-rose-100',
+                icon: `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`
+            },
+            info: {
+                border: 'border-indigo-200/90 text-slate-800',
+                iconBox: 'bg-indigo-50 text-indigo-600 border border-indigo-100',
+                icon: `<svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+            }
         };
 
-        const styles = {
-            success: 'bg-slate-900/90 border-emerald-500/40 text-emerald-300',
-            error: 'bg-slate-900/90 border-rose-500/40 text-rose-300',
-            info: 'bg-slate-900/90 border-indigo-500/40 text-indigo-200'
-        };
+        const config = typeConfig[type] || typeConfig.info;
+        toast.classList.add(...config.border.split(' '));
 
-        toast.classList.add(...styles[type].split(' '));
-        toast.innerHTML = `${icons[type]} <span>${message}</span>`;
+        toast.innerHTML = `
+            <div class="w-6 h-6 rounded-lg ${config.iconBox} flex items-center justify-center shrink-0">
+                ${config.icon}
+            </div>
+            <span class="text-slate-800 font-bold">${message}</span>
+            <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-slate-600 p-0.5 ml-1 rounded-md transition-colors" aria-label="Đóng">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        `;
         document.body.appendChild(toast);
         this.currentToast = toast;
 
@@ -290,9 +306,9 @@ const Confirm = {
         modal.className = 'fixed inset-0 z-[200] flex items-center justify-center p-4 animate-in fade-in duration-200';
         modal.innerHTML = `
             <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-md"></div>
-            <div class="bg-white rounded-[32px] p-7 sm:p-9 w-full max-w-sm shadow-2xl relative border border-white/90 animate-in zoom-in-95 duration-200 text-center">
-                <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div class="bg-white rounded-2xl p-7 sm:p-9 w-full max-w-sm shadow-2xl relative border border-slate-100 animate-in zoom-in-95 duration-200 text-center">
+                <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-rose-500 mx-auto mb-4 border border-rose-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                 </div>
