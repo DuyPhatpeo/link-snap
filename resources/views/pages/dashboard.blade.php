@@ -1,0 +1,207 @@
+{{-- === BẢNG ĐIỀU KHIỂN DÀNH CHO USER ĐÃ ĐĂNG NHẬP === --}}
+<div class="flex flex-col px-3 sm:px-6 max-w-6xl mx-auto pt-2 pb-10">
+    
+    {{-- Section: Welcome & Status Chip --}}
+    <section class="mt-1 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div class="space-y-1">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-indigo-50 border border-indigo-100 rounded-full">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 -ml-2"></span>
+                    <span class="text-[10px] font-bold text-indigo-700 tracking-wide">Workspace Trực Tuyến</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-black font-outfit text-slate-900 tracking-tight">
+                    Xin chào, <span class="text-gradient-aurora">{{ auth()->user()->name }}</span>!
+                </h1>
+                <p class="text-slate-500 font-medium text-xs">Tạo liên kết rút gọn mới hoặc cập nhật trang Bio của bạn ngay bên dưới.</p>
+            </div>
+            
+            {{-- Date Pill --}}
+            <div class="hidden sm:flex items-center gap-2.5 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-slate-200/70 shadow-sm">
+                <div class="w-7 h-7 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">Hôm nay</p>
+                    <p class="text-xs font-black text-slate-800 tracking-tight mt-0.5">{{ now()->translatedFormat('d M, Y') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Section: Hyper-Bar Shortener (Trọng tâm trải nghiệm) --}}
+    <section class="w-full mb-5 relative">
+        <div class="relative rounded-2xl sm:rounded-full bg-white/90 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_15px_35px_-10px_rgba(99,102,241,0.15)] focus-within:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.25)] focus-within:border-indigo-500 transition-all duration-300">
+            <form onsubmit="LinkManager.handleShorten(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
+                @csrf
+                {{-- Input URL chính --}}
+                <div class="flex-1 relative flex items-center">
+                    <div class="pl-3 sm:pl-4 text-indigo-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
+                        </svg>
+                    </div>
+                    <input type="url" id="url" placeholder="Dán liên kết dài vào đây (https://...)" required
+                        class="w-full bg-transparent py-3 sm:py-3.5 pl-2.5 pr-16 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 outline-none transition-all">
+                    
+                    {{-- Quick Paste / Clear Button --}}
+                    <div class="absolute right-2.5 flex items-center gap-1">
+                        <button type="button" id="clearUrl" onclick="LinkManager.clearInput('url')" class="text-slate-400 hover:text-rose-500 hidden transition-all p-1 active:scale-90" title="Xóa">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                        <button type="button" onclick="navigator.clipboard.readText().then(text => { document.getElementById('url').value = text; document.getElementById('clearUrl').classList.remove('hidden'); }).catch(() => {})" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-md text-[9px] font-bold tracking-wide transition-all" title="Dán nhanh từ bộ nhớ tạm">
+                            <span>Dán</span>
+                        </button>
+                    </div>
+                </div>
+
+                {{-- Mã Tùy Chỉnh (Alias) --}}
+                <div class="sm:w-44 border-t sm:border-t-0 sm:border-l border-slate-200/80 px-2 flex items-center">
+                    <span class="text-xs font-bold text-slate-400 font-mono select-none">/</span>
+                    <input type="text" id="customCode" placeholder="mã-tuỳ-chỉnh"
+                        class="w-full bg-transparent py-2.5 sm:py-3.5 pl-1 pr-2 text-xs font-bold font-mono text-slate-800 placeholder:text-slate-400 outline-none">
+                </div>
+
+                {{-- Nút Submit --}}
+                <button type="submit" id="btnSubmit"
+                    class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold font-outfit px-6 sm:px-7 py-3 rounded-xl sm:rounded-full transition-all shadow-md shadow-indigo-500/25 hover:shadow-indigo-500/40 uppercase tracking-wider text-xs active:scale-95 whitespace-nowrap">
+                    Rút gọn link ✨
+                </button>
+            </form>
+        </div>
+
+        {{-- Nút Mở Tùy Chọn Nâng Cao --}}
+        <div class="flex justify-center mt-2.5">
+            <button type="button" onclick="LinkManager.toggleAdvanced()" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/70 hover:bg-white border border-slate-200/60 shadow-sm text-slate-500 hover:text-indigo-600 transition-all text-[11px] font-bold">
+                <span class="uppercase tracking-wider">Cấu hình bảo vệ & nâng cao</span>
+                <svg id="advancedIcon" xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+        </div>
+
+        {{-- Panel Tùy Chọn Nâng Cao (Accordion Card) --}}
+        <div id="advancedPanel" class="hidden mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+            {{-- Box 1: Mật khẩu bảo vệ --}}
+            <div class="glass-card rounded-2xl p-4 border border-slate-200/70 space-y-2">
+                <div class="flex items-center gap-2 text-indigo-600">
+                    <div class="p-1.5 bg-indigo-50 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                    </div>
+                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-700">Mật khẩu bảo vệ</span>
+                </div>
+                <p class="text-[10px] text-slate-400">Yêu cầu người xem nhập mật khẩu để mở link gốc.</p>
+                <input type="password" id="linkPassword" placeholder="Nhập mật khẩu..." 
+                    class="w-full bg-white border border-slate-200 rounded-xl py-2 px-3 text-xs font-semibold text-slate-800 outline-none focus:border-indigo-500 transition-all">
+            </div>
+
+            {{-- Box 2: Giới hạn truy cập --}}
+            <div class="glass-card rounded-2xl p-4 border border-slate-200/70 space-y-2">
+                <div class="flex items-center gap-2 text-amber-600">
+                    <div class="p-1.5 bg-amber-50 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-700">Thời hạn & Lượt click</span>
+                </div>
+                <p class="text-[10px] text-slate-400">Tự động vô hiệu hóa sau thời gian hoặc số click.</p>
+                <div class="space-y-1.5">
+                    <input type="datetime-local" id="expiresAt" title="Thời gian hết hạn"
+                        class="w-full bg-white border border-slate-200 rounded-xl py-1.5 px-2.5 text-[11px] font-semibold text-slate-700 outline-none focus:border-indigo-500">
+                    <input type="number" id="clickLimit" placeholder="Giới hạn số lượt click..." min="1"
+                        class="w-full bg-white border border-slate-200 rounded-xl py-1.5 px-3 text-xs font-semibold text-slate-800 outline-none focus:border-indigo-500">
+                </div>
+            </div>
+
+            {{-- Box 3: Xem trước mạng xã hội --}}
+            <div class="glass-card rounded-2xl p-4 border border-slate-200/70 space-y-2">
+                <div class="flex items-center gap-2 text-emerald-600">
+                    <div class="p-1.5 bg-emerald-50 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    </div>
+                    <span class="text-[11px] font-black uppercase tracking-wider text-slate-700">Tùy biến Thẻ Card (OG)</span>
+                </div>
+                <p class="text-[10px] text-slate-400">Hiển thị đẹp mắt khi chia sẻ qua Zalo, Messenger, Facebook.</p>
+                <div class="space-y-1.5">
+                    <input type="text" id="metaTitle" placeholder="Tiêu đề hiển thị..." 
+                        class="w-full bg-white border border-slate-200 rounded-xl py-1.5 px-3 text-xs font-semibold text-slate-800 outline-none focus:border-indigo-500">
+                    <input type="text" id="metaDescription" placeholder="Mô tả ngắn gọn..." 
+                        class="w-full bg-white border border-slate-200 rounded-xl py-1.5 px-3 text-xs font-semibold text-slate-800 outline-none focus:border-indigo-500">
+                    <input type="url" id="metaThumbnail" placeholder="Link ảnh Thumbnail (https://...)" 
+                        class="w-full bg-white border border-slate-200 rounded-xl py-1.5 px-3 text-xs font-semibold text-slate-800 outline-none focus:border-indigo-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Section: Bento Quick Actions (3 Card tính năng) --}}
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-6">
+        <div class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-indigo-300 hover:shadow-lg transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-3 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
+                </svg>
+            </div>
+            <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5">Rút gọn liên kết</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Tạo mã QR tức thì, gắn thẻ quản lý và đặt mật khẩu bảo mật tuyệt đối.</p>
+        </div>
+
+        <a href="{{ route('bio.index') }}" class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-violet-300 hover:shadow-lg transition-all duration-300 group">
+            <div class="w-9 h-9 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600 mb-3 shadow-sm group-hover:scale-105 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </div>
+            <div class="flex items-center justify-between">
+                <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5 group-hover:text-violet-600 transition-colors">Trang Bio Cá Nhân</h3>
+                <span class="text-xs font-bold text-violet-600">&rarr;</span>
+            </div>
+            <p class="text-xs text-slate-500 leading-relaxed">Tập hợp toàn bộ liên kết mạng xã hội vào một trang cá nhân chuẩn TikTok/Instagram.</p>
+        </a>
+
+        <div class="glass-card rounded-2xl p-5 border border-slate-200/70 hover:border-cyan-300 hover:shadow-lg transition-all duration-300">
+            <div class="w-9 h-9 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-3 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+            </div>
+            <h3 class="text-sm font-black font-outfit text-slate-900 mb-0.5">Thống kê Click Thông Minh</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">Theo dõi chi tiết số lượt nhấp, thiết bị, hệ điều hành và nguồn truy cập thời gian thực.</p>
+        </div>
+    </section>
+
+    {{-- Section: Spotlight Banner Bio --}}
+    <section class="mb-6 relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-6 sm:p-7 text-white shadow-xl border border-white/10">
+        <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-violet-600/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="max-w-xl space-y-2 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-[9px] font-black uppercase tracking-widest text-cyan-300">Tính năng nổi bật</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-black font-outfit leading-snug">
+                    Tạo trang cá nhân ấn tượng chỉ trong 60 giây
+                </h2>
+                <p class="text-slate-300 text-xs font-medium leading-relaxed">
+                    Tùy biến avatar, màu nền, các nút liên kết động và xem trước thời gian thực trên khung điện thoại di động.
+                </p>
+            </div>
+            <a href="{{ route('bio.index') }}" class="px-6 py-3 bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black font-outfit rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 text-xs uppercase tracking-wider shrink-0">
+                Bắt đầu tạo Bio &rarr;
+            </a>
+        </div>
+    </section>
+
+    {{-- Section: Stats & Analytics Widget --}}
+    <section class="mb-6">
+        @include('components.stats-widget')
+    </section>
+
+    {{-- Section: Two-Column Bento Panels (Links & Click Logs) --}}
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+        @include('components.links-panel')
+        @include('components.logs-panel')
+    </section>
+
+</div>
