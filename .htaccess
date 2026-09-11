@@ -1,0 +1,53 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Block access to hidden files and directories (except .well-known)
+    RewriteRule ^\.(?!well-known).* - [F,L]
+
+    # Block direct access to sensitive files and source code folders
+    RewriteRule ^(\.env|\.git|composer\.(json|lock)|package\.json|package-lock\.json|artisan|phpunit\.xml|vite\.config\.js) - [F,L,NC]
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)(/.*)?$ - [F,L,NC]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # 1. Forward static assets to public folder if file exists in public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f [OR]
+    RewriteCond public/$1 -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # 2. Match common asset patterns and folders inside public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(css/.*|js/.*|screenshots/.*|images/.*|img/.*|logo\.png|favicon\.ico|robots\.txt)$ public/$1 [L]
+
+    # 3. Send all remaining application requests to Front Controller (index.php at root)...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Additional security: deny direct access to sensitive files
+<FilesMatch "^\.env|composer\.(json|lock)|package\.json|artisan">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
