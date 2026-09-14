@@ -66,6 +66,14 @@
             }
         }
     </script>
+    <script>
+        window.APP_CONFIG = {
+            baseUrl: "{{ url('/') }}",
+            googleLoginUrl: "{{ route('google.login') }}",
+            csrfToken: "{{ csrf_token() }}",
+            isAuth: "{{ Auth::check() ? 'true' : 'false' }}" === "true"
+        };
+    </script>
     @stack('styles')
 </head>
 <body class="font-sans min-h-screen text-slate-800 bg-[#fbfbfe] selection:bg-indigo-100 selection:text-indigo-600 antialiased relative overflow-x-hidden" data-auth="{{ Auth::check() ? '1' : '0' }}">
@@ -80,8 +88,8 @@
         <nav class="glass-card rounded-2xl px-4 sm:px-5 py-2.5 flex items-center justify-between transition-all duration-300">
             
             {{-- Brand Logo --}}
-            <div class="flex items-center gap-3 select-none cursor-pointer group active:scale-95 transition-all" onclick="window.location.assign('/')">
-                <div class="w-10 h-10 rounded-xl bg-indigo-600 p-[2px] shadow-sm group-hover:bg-indigo-700 transition-all duration-300">
+            <div class="flex items-center gap-3 select-none cursor-pointer group active:scale-95 transition-all" onclick="window.location.assign('{{ url('/') }}')">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 p-0.5 shadow-sm group-hover:bg-indigo-700 transition-all duration-300">
                     <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1.5">
                         <img src="{{ asset('logo.png') }}" alt="LinkSnap" class="w-full h-full object-contain rounded-md">
                     </div>
@@ -94,10 +102,10 @@
             {{-- Center Navigation Links (Desktop) --}}
             @auth
             <div class="hidden md:flex items-center gap-1 bg-slate-100/70 p-1 rounded-xl border border-slate-200/50">
-                <a href="/" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('/') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
+                <a href="{{ url('/') }}" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('/') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
                     Liên kết của tôi
                 </a>
-                <a href="/bio" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('bio*') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
+                <a href="{{ route('bio.index') }}" class="px-4 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all {{ Request::is('bio*') ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-900' }}">
                     Trang Bio
                 </a>
             </div>
@@ -127,7 +135,7 @@
                             </div>
                             <span class="text-xs font-bold text-slate-700 max-w-[120px] truncate">{{ Auth::user()->name }}</span>
                         </div>
-                        <form action="/api/logout" method="POST" class="inline">
+                        <form action="{{ route('logout') }}" method="POST" class="inline">
                             @csrf
                             <button type="submit" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all" title="Đăng xuất">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -190,7 +198,7 @@
                 <div class="space-y-2">
                     <h4 class="text-xs font-black font-outfit text-slate-900 uppercase tracking-widest">Sản phẩm</h4>
                     <ul class="space-y-2 text-xs font-semibold text-slate-500">
-                        <li><a href="/" class="hover:text-indigo-600 transition-colors">Rút gọn liên kết</a></li>
+                        <li><a href="{{ url('/') }}" class="hover:text-indigo-600 transition-colors">Rút gọn liên kết</a></li>
                         <li><a href="{{ route('bio.index') }}" class="hover:text-indigo-600 transition-colors">Tạo trang Bio</a></li>
                         <li><a href="#" class="hover:text-indigo-600 transition-colors opacity-60 cursor-not-allowed">Phân tích chuyên sâu</a></li>
                     </ul>
@@ -201,7 +209,7 @@
                     <h4 class="text-xs font-black font-outfit text-slate-900 uppercase tracking-widest">Tài khoản</h4>
                     <ul class="space-y-2 text-xs font-semibold text-slate-500">
                         @auth
-                            <li><a href="/" class="hover:text-indigo-600 transition-colors">Bảng điều khiển</a></li>
+                            <li><a href="{{ url('/') }}" class="hover:text-indigo-600 transition-colors">Bảng điều khiển</a></li>
                             <li><a href="{{ route('bio.index') }}" class="hover:text-indigo-600 transition-colors">Quản lý Bio Pages</a></li>
                         @else
                             <li><button onclick="Modal.open('loginModal')" class="hover:text-indigo-600 transition-colors text-left">Đăng nhập</button></li>
@@ -248,18 +256,18 @@
             </div>
 
             <div class="flex-1 p-6 space-y-3">
-                <a href="/" class="flex items-center justify-between px-4 py-3.5 rounded-2xl {{ Request::is('/') ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20' : 'bg-slate-50 text-slate-700 hover:bg-slate-100' }} transition-all">
+                <a href="{{ url('/') }}" class="flex items-center justify-between px-4 py-3.5 rounded-2xl {{ Request::is('/') ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20' : 'bg-slate-50 text-slate-700 hover:bg-slate-100' }} transition-all">
                     <span class="font-bold text-xs uppercase tracking-wider">Liên kết của tôi</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
                 </a>
-                <a href="/bio" class="flex items-center justify-between px-4 py-3.5 rounded-2xl {{ Request::is('bio*') ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20' : 'bg-slate-50 text-slate-700 hover:bg-slate-100' }} transition-all">
+                <a href="{{ route('bio.index') }}" class="flex items-center justify-between px-4 py-3.5 rounded-2xl {{ Request::is('bio*') ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/20' : 'bg-slate-50 text-slate-700 hover:bg-slate-100' }} transition-all">
                     <span class="font-bold text-xs uppercase tracking-wider">Trang Bio</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
                 </a>
             </div>
 
             <div class="p-6 border-t border-slate-100">
-                <form action="/api/logout" method="POST">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-rose-50 text-rose-600 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all">
                         Đăng xuất tài khoản

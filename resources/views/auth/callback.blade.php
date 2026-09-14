@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <title>Đang xử lý đăng nhập...</title>
 </head>
-<body>
+<body data-error="{{ $error ?? '' }}" data-home-url="{{ url('/') }}">
     <script>
-        @if(isset($error))
+        const { error, homeUrl } = document.body.dataset;
+
+        if (error) {
             if (window.opener) {
-                window.opener.Toast.show("{{ $error }}", 'error');
+                if (window.opener.Toast) {
+                    window.opener.Toast.show(error, 'error');
+                }
                 window.close();
             } else {
-                window.location.href = '/?error=' + encodeURIComponent("{{ $error }}");
+                window.location.href = homeUrl + "?error=" + encodeURIComponent(error);
             }
-        @else
+        } else {
             if (window.opener) {
-                // Gửi thông báo thành công cho trang cha nếu cần, hoặc chỉ reload
+                // Send success notification to parent window or simply reload
                 window.opener.location.reload();
                 window.close();
             } else {
-                window.location.href = '/';
+                window.location.href = homeUrl;
             }
-        @endif
+        }
     </script>
 </body>
 </html>

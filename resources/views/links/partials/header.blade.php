@@ -6,9 +6,9 @@
         <div class="space-y-3 min-w-0 flex-1">
             <div class="flex flex-wrap items-center gap-2">
                 <nav class="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-slate-400">
-                    <a href="/" class="hover:text-indigo-600 transition-colors">Trang chủ</a>
+                    <a href="{{ url('/') }}" class="hover:text-indigo-600 transition-colors">Trang chủ</a>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                    <a href="/links" class="hover:text-indigo-600 transition-colors font-bold">Liên kết</a>
+                    <a href="{{ route('links.index') }}" class="hover:text-indigo-600 transition-colors font-bold">Liên kết</a>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                     <span class="text-indigo-600 font-black">Chi tiết</span>
                 </nav>

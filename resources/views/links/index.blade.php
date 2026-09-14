@@ -10,7 +10,7 @@
         <div class="glass-card rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-sm mb-6 flex flex-col md:flex-row md:items-end justify-between gap-5 animate-in fade-in duration-500">
             <div class="space-y-1.5">
                 <nav class="flex items-center gap-2 text-[10px] font-black uppercase tracking-wider text-slate-400">
-                    <a href="/" class="hover:text-indigo-600 transition-colors">Trang chủ</a>
+                    <a href="{{ url('/') }}" class="hover:text-indigo-600 transition-colors">Trang chủ</a>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
                     <span class="text-indigo-600 font-black">Liên kết</span>
                 </nav>

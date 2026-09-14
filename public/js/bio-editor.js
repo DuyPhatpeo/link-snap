@@ -37,8 +37,17 @@ const Editor = {
             bioPageId: "",
             avatarPlaceholder: "",
             csrfToken: document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || "",
-            indexRoute: "/bio"
+            indexRoute: window.APP_CONFIG?.baseUrl ? `${window.APP_CONFIG.baseUrl}/bio` : "/bio"
         };
+    },
+
+    apiUrl(endpoint) {
+        if (window.Api && typeof window.Api.formatUrl === 'function') {
+            return window.Api.formatUrl(endpoint);
+        }
+        const base = (window.APP_CONFIG?.baseUrl || '').replace(/\/+$/, '');
+        const clean = endpoint.replace(/^\/+/, '');
+        return base ? `${base}/${clean}` : `/${clean}`;
     },
 
     init() {
@@ -152,7 +161,7 @@ const Editor = {
     async deleteLink(id) {
         const execute = async () => {
             const config = this.getConfig();
-            const r = await fetch(`/api/bio/links/${id}`, { 
+            const r = await fetch(this.apiUrl(`api/bio/links/${id}`), { 
                 method: "DELETE", 
                 headers: { "X-CSRF-TOKEN": config.csrfToken } 
             });
@@ -172,7 +181,7 @@ const Editor = {
     async deleteBio() {
         const execute = async () => {
             const config = this.getConfig();
-            const r = await fetch(`/api/bio/${config.bioPageId}`, { 
+            const r = await fetch(this.apiUrl(`api/bio/${config.bioPageId}`), { 
                 method: "DELETE", 
                 headers: { "X-CSRF-TOKEN": config.csrfToken } 
             });
@@ -321,7 +330,7 @@ const Editor = {
         }
         data.theme_data = td;
         const config = this.getConfig();
-        const r = await fetch(`/api/bio/${config.bioPageId}`, { 
+        const r = await fetch(this.apiUrl(`api/bio/${config.bioPageId}`), { 
             method: "PATCH", 
             headers: { 
                 "Content-Type": "application/json", 
@@ -341,7 +350,7 @@ const Editor = {
         const data = Object.fromEntries(fd.entries());
         const id = data.link_id;
         const config = this.getConfig();
-        const url = id ? `/api/bio/links/${id}` : `/api/bio/${config.bioPageId}/links`;
+        const url = id ? this.apiUrl(`api/bio/links/${id}`) : this.apiUrl(`api/bio/${config.bioPageId}/links`);
         const r = await fetch(url, { 
             method: id ? "PATCH" : "POST", 
             headers: { 
@@ -357,7 +366,7 @@ const Editor = {
         const items = document.querySelectorAll("#socialIconsList [data-sort-id], #buttonLinksList [data-sort-id]");
         const order = Array.from(items).map(i => i.getAttribute("data-sort-id"));
         const config = this.getConfig();
-        await fetch(`/api/bio/${config.bioPageId}/reorder`, { 
+        await fetch(this.apiUrl(`api/bio/${config.bioPageId}/reorder`), { 
             method: "POST", 
             headers: { 
                 "Content-Type": "application/json", 

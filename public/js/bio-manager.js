@@ -40,7 +40,8 @@ const BioManager = {
                            || document.querySelector('input[name="_token"]')?.value 
                            || data._token;
 
-            const response = await fetch('/api/bio', {
+            const apiUrl = window.Api ? Api.formatUrl('api/bio') : ((window.APP_CONFIG?.baseUrl || '') + '/api/bio');
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +74,8 @@ const BioManager = {
                 const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') 
                                || document.querySelector('input[name="_token"]')?.value;
 
-                const response = await fetch(`/api/bio/${id}`, {
+                const deleteUrl = window.Api ? Api.formatUrl(`api/bio/${id}`) : ((window.APP_CONFIG?.baseUrl || '') + `/api/bio/${id}`);
+                const response = await fetch(deleteUrl, {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': csrfToken

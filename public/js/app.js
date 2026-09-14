@@ -13,10 +13,29 @@ const IS_AUTHENTICATED = document.body.dataset.auth === '1';
  * Tự động đính kèm CSRF Token từ meta tag hoặc form input.
  */
 const Api = {
+    getBaseUrl() {
+        if (window.APP_CONFIG && window.APP_CONFIG.baseUrl) {
+            return window.APP_CONFIG.baseUrl.replace(/\/+$/, '');
+        }
+        return '';
+    },
+    formatUrl(url) {
+        if (!url) return this.getBaseUrl() || '/';
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        }
+        const base = this.getBaseUrl();
+        const cleanPath = url.replace(/^\/+/, '');
+        if (cleanPath.startsWith('?')) {
+            return base ? `${base}/${cleanPath}` : `/${cleanPath}`;
+        }
+        return base ? `${base}/${cleanPath}` : `/${cleanPath}`;
+    },
     async fetch(url, options = {}) {
-        const cleanUrl = url.startsWith('/') ? url : `/${url}`;
+        const cleanUrl = this.formatUrl(url);
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') 
                        || document.querySelector('input[name="_token"]')?.value 
+                       || window.APP_CONFIG?.csrfToken
                        || '';
 
         const config = {
@@ -370,7 +389,7 @@ const Auth = {
                 method: 'POST',
                 body: Object.fromEntries(formData)
             });
-            window.location.assign('/');
+            window.location.assign(Api.getBaseUrl() || '/');
         } catch (err) {
             ErrorUI.show(form.querySelector('[name=password]'), err.data?.message || 'Thông tin đăng nhập không hợp lệ.');
         }
@@ -414,7 +433,7 @@ const Auth = {
                 method: 'POST',
                 body: Object.fromEntries(formData)
             });
-            window.location.assign('/');
+            window.location.assign(Api.getBaseUrl() || '/');
         } catch (err) {
             const msg = err.data?.errors ? Object.values(err.data.errors).flat().join('<br>') : (err.data?.message || 'Lỗi đăng ký');
             ErrorUI.show(form.querySelector('[name=email]'), msg);
@@ -425,7 +444,7 @@ const Auth = {
         const height = 700;
         const left = (window.innerWidth / 2) - (width / 2);
         const top = (window.innerHeight / 2) - (height / 2);
-        const url = "/auth/google";
+        const url = window.APP_CONFIG?.googleLoginUrl || Api.formatUrl('auth/google');
         window.open(url, 'GoogleLogin', `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,status=yes`);
     }
 };
@@ -628,7 +647,7 @@ const LinkManager = {
                             
                             <div id="${menuId}" class="absolute right-0 top-full mt-1.5 w-44 bg-white rounded-2xl shadow-2xl border border-slate-200/80 hidden z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
                                 <div class="p-1.5 space-y-0.5">
-                                    <a href="/links/${link.short_code}" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[11px] font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all text-left">
+                                    <a href="${Api.formatUrl(`links/${link.short_code}`)}" class="flex items-center gap-2.5 px-3 py-2 rounded-xl text-[11px] font-bold text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-all text-left">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                                         Thống kê
                                     </a>
@@ -657,7 +676,7 @@ const LinkManager = {
                 const toggleArea = document.createElement('div');
                 toggleArea.className = 'border-t border-slate-100 bg-slate-50/50 rounded-b-2xl';
                 toggleArea.innerHTML = `
-                    <a href="/links" class="w-full py-3 text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:bg-white transition-all flex items-center justify-center gap-1.5 rounded-b-2xl">
+                    <a href="${Api.formatUrl('links')}" class="w-full py-3 text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:bg-white transition-all flex items-center justify-center gap-1.5 rounded-b-2xl">
                         <span>Xem toàn bộ ${data.length} liên kết</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                     </a>
@@ -1045,7 +1064,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             urlInput.focus();
         } else {
-            window.location.href = '/?focus=url';
+            window.location.href = Api.formatUrl('?focus=url');
         }
     };
 
