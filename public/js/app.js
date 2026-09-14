@@ -296,8 +296,12 @@ const ErrorUI = {
         if (!inputEl) return;
         
         if (inputEl.id === 'url' || inputEl.id === 'customCode') {
-            AlertUI.show(msg);
-            inputEl.classList.add('!border-rose-400', '!bg-rose-50/50');
+            const card = inputEl.closest('.rounded-2xl');
+            if (card) {
+                card.classList.add('!border-rose-400', 'animate-shake');
+                setTimeout(() => card.classList.remove('animate-shake'), 450);
+            }
+            Toast.show(msg, 'error');
             return;
         }
 
@@ -593,12 +597,19 @@ const LinkManager = {
             return;
         }
 
+        let urlValue = input.value.trim();
+        // Tự động thêm https:// nếu người dùng chưa nhập protocol
+        if (!/^https?:\/\//i.test(urlValue)) {
+            urlValue = 'https://' + urlValue;
+            input.value = urlValue;
+        }
+
         btn.disabled = true;
         btn.innerHTML = '✨ SNAPPING...';
 
         try {
             const body = { 
-                url: input.value,
+                url: urlValue,
                 password: document.getElementById('linkPassword')?.value,
                 expires_at: document.getElementById('expiresAt')?.value,
                 click_limit: document.getElementById('clickLimit')?.value,
@@ -1137,6 +1148,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mainInput) {
         mainInput.addEventListener('input', () => {
+            const card = mainInput.closest('.rounded-2xl');
+            if (card) card.classList.remove('!border-rose-400');
             if (clearBtn) {
                 if (mainInput.value) clearBtn.classList.remove('hidden');
                 else clearBtn.classList.add('hidden');

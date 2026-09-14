@@ -34,7 +34,7 @@
     {{-- Section: Hyper-Bar Shortener (Trọng tâm trải nghiệm) --}}
     <section class="w-full mb-6 relative">
         <div class="relative rounded-2xl bg-white/90 backdrop-blur-2xl p-1.5 sm:p-2 border border-slate-200/90 shadow-[0_15px_35px_-10px_rgba(99,102,241,0.15)] focus-within:shadow-[0_15px_35px_-5px_rgba(99,102,241,0.25)] focus-within:border-indigo-500 transition-all duration-300">
-            <form onsubmit="LinkManager.handleShorten(event)" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
+            <form onsubmit="LinkManager.handleShorten(event)" novalidate class="flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5">
                 @csrf
                 {{-- Input URL chính --}}
                 <div class="flex-1 relative flex items-center">
@@ -43,7 +43,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.1-1.1" />
                         </svg>
                     </div>
-                    <input type="url" id="url" placeholder="Dán liên kết dài vào đây (https://...)" required
+                    <input type="text" inputmode="url" id="url" placeholder="Dán liên kết dài vào đây (https://...)" autocomplete="off" spellcheck="false"
                         class="w-full bg-transparent py-3 sm:py-3.5 pl-2.5 pr-16 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 outline-none transition-all">
                     
                     {{-- Quick Paste / Clear Button --}}
