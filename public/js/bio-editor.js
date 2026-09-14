@@ -400,9 +400,43 @@ const Editor = {
         if (i) i.src = v || this.getConfig().avatarPlaceholder; 
     },
 
-    copyBioLink(b) { 
-        navigator.clipboard.writeText(b.getAttribute("data-url")); 
-        if (window.Toast) Toast.show("Đã sao chép link Bio!"); 
+    async copyBioLink(b) { 
+        const url = b?.getAttribute("data-url");
+        if (!url) return;
+
+        if (window.Utils && typeof window.Utils.copyToClipboard === 'function') {
+            await window.Utils.copyToClipboard(url, b);
+        } else {
+            let copied = false;
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                try {
+                    await navigator.clipboard.writeText(url);
+                    copied = true;
+                } catch (e) {
+                    console.warn('Bio copy writeText failed, trying fallback...', e);
+                }
+            }
+            if (!copied) {
+                try {
+                    const t = document.createElement("textarea");
+                    t.value = url;
+                    t.style.position = "fixed";
+                    t.style.opacity = "0";
+                    document.body.appendChild(t);
+                    t.focus();
+                    t.select();
+                    copied = document.execCommand("copy");
+                    document.body.removeChild(t);
+                } catch (err) {
+                    console.error("Copy bio link failed", err);
+                }
+            }
+            if (copied) {
+                if (window.Toast) Toast.show("Đã sao chép link Bio!", "success");
+            } else {
+                if (window.Toast) Toast.show("Không thể sao chép. Vui lòng thử lại.", "error");
+            }
+        }
     }
 };
 

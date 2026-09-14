@@ -45,7 +45,7 @@
                         class="w-full bg-transparent py-3 sm:py-3.5 pl-2.5 pr-16 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 outline-none">
                     
                     <div class="absolute right-2.5 flex items-center gap-1.5">
-                        <button type="button" onclick="navigator.clipboard && navigator.clipboard.readText().then(t => { const el = document.getElementById('url'); el.value = t; if(window.LinkManager) LinkManager.toggleClearButton('url'); })" 
+                        <button type="button" onclick="Utils.pasteFromClipboard('url')" 
                             class="px-2 py-1 bg-slate-100/80 hover:bg-indigo-50 text-slate-500 hover:text-indigo-600 rounded-lg text-[10px] font-bold font-outfit flex items-center gap-1 transition-all active:scale-95" title="Dán liên kết từ bộ nhớ tạm">
                             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
                             <span>Dán</span>

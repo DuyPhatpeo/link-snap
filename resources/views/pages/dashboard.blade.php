@@ -51,7 +51,7 @@
                         <button type="button" id="clearUrl" onclick="LinkManager.clearInput('url')" class="text-slate-400 hover:text-rose-500 hidden transition-all p-1 active:scale-90" title="Xóa">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
                         </button>
-                        <button type="button" onclick="navigator.clipboard.readText().then(text => { document.getElementById('url').value = text; document.getElementById('clearUrl').classList.remove('hidden'); }).catch(() => {})" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-md text-[9px] font-bold tracking-wide transition-all" title="Dán nhanh từ bộ nhớ tạm">
+                        <button type="button" onclick="Utils.pasteFromClipboard('url')" class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-md text-[9px] font-bold tracking-wide transition-all" title="Dán nhanh từ bộ nhớ tạm">
                             <span>Dán</span>
                         </button>
                     </div>

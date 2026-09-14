@@ -70,31 +70,133 @@ const Api = {
  * Tiện ích chung
  */
 const Utils = {
+    /**
+     * Sao chép văn bản vào clipboard với cơ chế 2 lớp (Clipboard API + textarea fallback).
+     * Đảm bảo hoạt động tin cậy trên cả HTTP, HTTPS, localhost, mạng LAN và thiết bị di động.
+     */
     async copyToClipboard(text, btn = null) {
-        try {
-            await navigator.clipboard.writeText(text);
-            if (btn) {
-                const originalContent = btn.innerHTML;
-                if (originalContent.includes('<svg')) {
-                    btn.classList.add('!bg-emerald-600', '!text-white', '!border-emerald-600');
-                    setTimeout(() => {
-                        btn.classList.remove('!bg-emerald-600', '!text-white', '!border-emerald-600');
-                    }, 2000);
-                } else {
-                    btn.innerHTML = 'COPIED! ✨';
-                    setTimeout(() => {
-                        btn.innerHTML = originalContent;
-                    }, 2000);
-                }
+        if (!text) {
+            if (window.Toast) Toast.show('Không có nội dung để sao chép.', 'warning');
+            return false;
+        }
+
+        let copied = false;
+
+        // 1. Thử dùng modern Clipboard API nếu khả dụng
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+            try {
+                await navigator.clipboard.writeText(text);
+                copied = true;
+            } catch (apiErr) {
+                console.warn('navigator.clipboard.writeText failed, falling back to execCommand...', apiErr);
             }
-            Toast.show('Đã sao chép vào bộ nhớ tạm!', 'success');
+        }
+
+        // 2. Fallback dùng thẻ textarea ẩn và execCommand('copy')
+        if (!copied) {
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.top = '0';
+                textarea.style.left = '0';
+                textarea.style.width = '2em';
+                textarea.style.height = '2em';
+                textarea.style.padding = '0';
+                textarea.style.border = 'none';
+                textarea.style.outline = 'none';
+                textarea.style.boxShadow = 'none';
+                textarea.style.background = 'transparent';
+                textarea.style.opacity = '0';
+                textarea.setAttribute('readonly', '');
+                document.body.appendChild(textarea);
+                
+                textarea.focus();
+                textarea.select();
+                textarea.setSelectionRange(0, textarea.value.length);
+                
+                copied = document.execCommand('copy');
+                document.body.removeChild(textarea);
+            } catch (fallbackErr) {
+                console.error('Fallback execCommand copy failed:', fallbackErr);
+                copied = false;
+            }
+        }
+
+        if (copied) {
+            if (btn) {
+                this.applyCopyFeedback(btn);
+            }
+            if (window.Toast) {
+                Toast.show('Đã sao chép vào bộ nhớ tạm!', 'success');
+            }
             return true;
-        } catch (err) {
-            console.error('Copy failed', err);
-            Toast.show('Không thể sao chép. Vui lòng thử lại.', 'error');
+        } else {
+            if (window.Toast) {
+                Toast.show('Không thể sao chép. Vui lòng thử lại hoặc sao chép thủ công.', 'error');
+            }
             return false;
         }
     },
+
+    /**
+     * Hiệu ứng thị giác khi bấm nút sao chép thành công
+     */
+    applyCopyFeedback(btn) {
+        if (!btn || !(btn instanceof HTMLElement)) return;
+
+        const svg = btn.querySelector('svg');
+        const originalHtml = btn.innerHTML;
+
+        if (svg) {
+            const svgClass = svg.getAttribute('class') || 'h-3.5 w-3.5';
+            const checkmarkSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="${svgClass} text-emerald-500 animate-in zoom-in" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>`;
+
+            if (btn.tagName === 'BUTTON' && btn.textContent.trim().length > 0) {
+                btn.innerHTML = checkmarkSvg + ' <span class="text-emerald-600 font-bold text-xs ml-1">Đã chép!</span>';
+            } else {
+                btn.innerHTML = checkmarkSvg;
+            }
+
+            btn.classList.add('!text-emerald-500');
+
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.classList.remove('!text-emerald-500');
+            }, 2000);
+        } else {
+            btn.innerHTML = 'COPIED! ✨';
+            btn.classList.add('!bg-emerald-600', '!text-white');
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.classList.remove('!bg-emerald-600', '!text-white');
+            }, 2000);
+        }
+    },
+
+    async pasteFromClipboard(targetInputId) {
+        const input = document.getElementById(targetInputId);
+        if (!input) return;
+
+        if (navigator.clipboard && typeof navigator.clipboard.readText === 'function') {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (text) {
+                    input.value = text;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    input.focus();
+                    if (window.Toast) Toast.show('Đã dán liên kết từ clipboard!', 'info');
+                    return;
+                }
+            } catch (err) {
+                console.warn('Clipboard readText not permitted or failed', err);
+            }
+        }
+        
+        input.focus();
+        if (window.Toast) Toast.show('Vui lòng nhấn Ctrl+V để dán liên kết!', 'info');
+    },
+
     debounce(func, wait) {
         let timeout;
         return function(...args) {
@@ -487,12 +589,7 @@ const LinkManager = {
         }
 
         if (this.isShortened) {
-            navigator.clipboard.writeText(input.value);
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'COPIED! ✨';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
+            await Utils.copyToClipboard(input.value, btn);
             return;
         }
 
@@ -864,9 +961,12 @@ const LinkManager = {
         }
     },
 
-    copyCurrentQRLink() {
-        if (this.currentShortUrl) {
-            Utils.copyToClipboard(this.currentShortUrl);
+    copyCurrentQRLink(triggerEl = null) {
+        const urlToCopy = this.currentShortUrl || document.getElementById('qrShortUrlDisplay')?.textContent;
+        if (urlToCopy && urlToCopy !== '...') {
+            const iconWrapper = document.getElementById('qrCopyIconWrapper') || triggerEl;
+            const fullUrl = urlToCopy.startsWith('http') ? urlToCopy : `https://${urlToCopy}`;
+            Utils.copyToClipboard(fullUrl, iconWrapper);
         }
     },
 
@@ -903,13 +1003,13 @@ const LinkManager = {
                     text: 'Truy cập liên kết rút gọn của tôi:',
                     url: url
                 });
+                return;
             } catch (e) {
                 if (e.name !== 'AbortError') console.error('Share error', e);
             }
-        } else {
-            navigator.clipboard.writeText(url);
-            Toast.show('Đã copy liên kết vào bộ nhớ tạm!', 'info');
         }
+        
+        await Utils.copyToClipboard(url);
     },
 
     toggleMenu(menuId, btnElement = null) {
@@ -1078,3 +1178,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Expose core objects to window for global access, inline Blade event handlers and external scripts
+window.Utils = Utils;
+window.LinkManager = LinkManager;
+window.Modal = Modal;
+window.Toast = Toast;
+window.Api = Api;
+window.ErrorUI = ErrorUI;
+window.StringHelper = StringHelper;
+
