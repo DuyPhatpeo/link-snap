@@ -55,5 +55,5 @@
 @endpush
 
 @push('scripts')
-<script src="{{ asset('js/bio-manager.js') }}" defer></script>
+<script src="{{ versioned_asset('js/bio-manager.js') }}" defer></script>
 @endpush

@@ -29,7 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 
     <!-- Custom CSS Design System -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ versioned_asset('css/style.css') }}">
 
     <script>
         tailwind.config = {
@@ -283,7 +283,7 @@
     @stack('modals')
 
     <!-- Core Application JavaScript -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ versioned_asset('js/app.js') }}" defer></script>
     @stack('scripts')
 
     {{-- Flash Data for JS Toast Notifications --}}

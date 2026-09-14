@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        if (file_exists(app_path('Helpers/helpers.php'))) {
+            require_once app_path('Helpers/helpers.php');
+        }
     }
 
     /**
@@ -19,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::directive('versionedAsset', function ($path) {
+            return "<?php echo versioned_asset({$path}); ?>";
+        });
     }
 }

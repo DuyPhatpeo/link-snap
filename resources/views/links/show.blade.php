@@ -31,7 +31,7 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('js/link-details.js') }}" defer></script>
+<script src="{{ versioned_asset('js/link-details.js') }}" defer></script>
 <script id="dailyClicksData" type="application/json">@json($dailyClicks)</script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {

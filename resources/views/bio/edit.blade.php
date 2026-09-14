@@ -87,5 +87,5 @@
     };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-<script src="{{ asset('js/bio-editor.js') }}" defer></script>
+<script src="{{ versioned_asset('js/bio-editor.js') }}" defer></script>
 @endpush
